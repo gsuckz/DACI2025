@@ -71,8 +71,8 @@ N 1020 -20 1130 -20 {lab=#net1}
 N 1130 -20 1210 -20 {lab=#net1}
 N 950 40 1020 40 {lab=vss}
 C {sky130_fd_pr/nfet_01v8.sym} 1310 -65 0 1 {name=M3
-L=1
-W=4
+L=1.5
+W=6
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
@@ -82,8 +82,8 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 1550 -65 0 0 {name=M4
-L=1
-W=4
+L=1.5
+W=6
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
@@ -93,35 +93,34 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 1410 -440 0 0 {name=M5
-L=0.5
-W=6
+L=0.3
+W=10
+ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
+as="'W * 0.29'" ps="'2 * (W + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+nf=1 mult=1
+model=pfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/pfet_01v8.sym} 1870 -440 0 0 {name=M7
+L=0.3
+W=10
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
 nf=1 mult=12
 model=pfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/pfet_01v8.sym} 1870 -440 0 0 {name=M7
-L=0.5
-W=8
-ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
-as="'W * 0.29'" ps="'2 * (W + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-nf=1 mult=50
-model=pfet_01v8
-spiceprefix=X
-}
+spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8.sym} 1070 -440 0 1 {name=M8
-L=0.5
-W=2
+L=0.3
+W=10
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=8
+nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
@@ -156,16 +155,15 @@ C {ipin.sym} 1180 -270 0 0 {name=p3 lab=vin_n}
 C {ipin.sym} 1670 -270 2 0 {name=p4 lab=vin_p}
 C {ipin.sym} 950 -360 0 0 {name=p5 lab=iref}
 C {sky130_fd_pr/nfet_01v8.sym} 1870 -60 0 0 {name=M6
-L=0.5
-W=6
+L=0.15
+W=10
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=30
+nf=1 mult=20
 model=nfet_01v8
-spiceprefix=X
-}
+spiceprefix=X}
 C {lab_wire.sym} 1630 -190 0 0 {name=l3 sig_type=std_logic lab=voe1}
 C {opin.sym} 2030 -240 0 0 {name=p6 lab=vout}
 C {ngspice_get_value.sym} 1290 -330 0 0 {name=r2 node=i(@M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[id])
@@ -182,7 +180,7 @@ C {ngspice_get_value.sym} 1890 -120 0 0 {name=r10 node=i(@M.X1.XM6.msky130_fd_pr
 descr="I= "}
 C {ngspice_get_value.sym} 1570 -330 0 0 {name=r11 node=i(@M.X1.XM2.msky130_fd_pr__pfet_01v8_lvt[id])
 descr="I= "}
-C {ngspice_get_value.sym} 1890 -370 0 0 {name=r12 node=i(@M.X1.XM7.msky130_fd_pr__pfet_01v8[id])
+C {ngspice_get_value.sym} 1950 -370 0 0 {name=r12 node=i(@M.X1.XM7.msky130_fd_pr__pfet_01v8[id])
 descr="I= "}
 C {ngspice_get_value.sym} 1430 -380 0 0 {name=r13 node=i(@M.X1.XM5.msky130_fd_pr__pfet_01v8[id])
 descr="I= "}
@@ -201,18 +199,18 @@ C {ngspice_get_value.sym} 1570 -90 0 0 {name=r18 node=@M.X1.XM4.msky130_fd_pr__n
 descr="gm= "}
 C {ngspice_get_value.sym} 1890 -90 0 0 {name=r19 node=@M.X1.XM6.msky130_fd_pr__nfet_01v8[gm]
 descr="gm= "}
-C {ngspice_get_value.sym} 1890 -340 0 0 {name=r20 node=@M.X1.XM7.msky130_fd_pr__pfet_01v8[gm]
+C {ngspice_get_value.sym} 1950 -340 0 0 {name=r20 node=@M.X1.XM7.msky130_fd_pr__pfet_01v8[gm]
 descr="gm= "}
-C {ngspice_get_value.sym} 1510 -440 0 0 {name=r21 node=@M.X1.XM5.msky130_fd_pr__pfet_01v8[gm]
+C {ngspice_get_value.sym} 1530 -440 0 0 {name=r21 node=@M.X1.XM5.msky130_fd_pr__pfet_01v8[gm]
 descr="gm= "}
 C {ngspice_get_value.sym} 1090 -440 0 0 {name=r22 node=@M.X1.XM8.msky130_fd_pr__pfet_01v8[gm]
 descr="gm= "}
 C {ngspice_probe.sym} 1750 -190 0 0 {name=r25}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 1270 -270 0 0 {name=M1
 L=1
-W=4
+W=6
 nf=1
-mult=12
+mult=20
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -224,9 +222,9 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 1590 -270 0 1 {name=M2
 L=1
-W=4
+W=6
 nf=1
-mult=12
+mult=20
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -238,7 +236,9 @@ spiceprefix=X
 }
 C {capa.sym} 1830 -190 3 0 {name=C1
 m=1
-value=.5p
+value=0.5p
 footprint=1206
 device="ceramic capacitor"}
 C {ammeter.sym} 1020 10 0 0 {name=Vmeas savecurrent=true spice_ignore=0}
+C {ngspice_get_value.sym} 1530 -410 0 0 {name=r1 node=@M.X1.XM5.msky130_fd_pr__pfet_01v8[vth]
+descr="vth= "}
