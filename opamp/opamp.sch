@@ -1,4 +1,5 @@
-v {xschem version=3.4.6 file_version=1.2}
+v {xschem version=3.4.6RC file_version=1.2
+}
 G {}
 K {}
 V {}
@@ -71,8 +72,8 @@ N 1020 -20 1130 -20 {lab=#net1}
 N 1130 -20 1210 -20 {lab=#net1}
 N 950 40 1020 40 {lab=vss}
 C {sky130_fd_pr/nfet_01v8.sym} 1310 -65 0 1 {name=M3
-L=1.5
-W=6
+L=1
+W=2.5
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
@@ -82,8 +83,8 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 1550 -65 0 0 {name=M4
-L=1.5
-W=6
+L=1
+W=2.5
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
@@ -94,28 +95,28 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 1410 -440 0 0 {name=M5
 L=0.3
-W=10
+W=16
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=1
+nf=1 mult=2
 model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 1870 -440 0 0 {name=M7
 L=0.3
-W=10
+W=16
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=12
+nf=1 mult=14
 model=pfet_01v8
 spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8.sym} 1070 -440 0 1 {name=M8
 L=0.3
-W=10
+W=16
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
@@ -136,12 +137,12 @@ C {lab_wire.sym} 1937.5 -240 0 0 {name=l8 sig_type=std_logic lab=vout
 C {lab_wire.sym} 1450 -65 0 0 {name=l6 sig_type=std_logic lab=vbn}
 C {sky130_fd_pr/nfet_01v8.sym} 1720 -210 1 0 {name=M9
 L=0.15
-W=10
+W=25
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=2
+nf=1 mult=1
 model=nfet_01v8
 spiceprefix=X
 }
@@ -155,8 +156,8 @@ C {ipin.sym} 1180 -270 0 0 {name=p3 lab=vin_n}
 C {ipin.sym} 1670 -270 2 0 {name=p4 lab=vin_p}
 C {ipin.sym} 950 -360 0 0 {name=p5 lab=iref}
 C {sky130_fd_pr/nfet_01v8.sym} 1870 -60 0 0 {name=M6
-L=0.15
-W=10
+L=0.3
+W=12
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
@@ -236,7 +237,7 @@ spiceprefix=X
 }
 C {capa.sym} 1830 -190 3 0 {name=C1
 m=1
-value=0.5p
+value=1.4p
 footprint=1206
 device="ceramic capacitor"}
 C {ammeter.sym} 1020 10 0 0 {name=Vmeas savecurrent=true spice_ignore=0}

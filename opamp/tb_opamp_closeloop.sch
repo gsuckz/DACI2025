@@ -1,4 +1,5 @@
-v {xschem version=3.4.6 file_version=1.2}
+v {xschem version=3.4.6RC file_version=1.2
+}
 G {}
 K {}
 V {}
@@ -80,7 +81,7 @@ value="
 .param vdd  = 1.8
 .param vss  = 0.0
 .param vcm  = 0.8
-.param vac  = 10m
+.param vac  = 60m
 .param fin  = 9.765625e5
 .options TEMP = 65.0
 
