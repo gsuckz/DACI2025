@@ -157,19 +157,19 @@ value="
   set filetype=ascii
   write tpfinal_noise.raw
 
-  reset
-  tran 0.001u 11u
-  fourier 9.765625e5 vout
-  let THD_db = db(fourier11[1][3]/fourier11[1][1])
-  print THD_db
-  let lin-tstart = \{Ti_FFT\} $ skip the start - up phase
-  let lin-tstep = \{Ts_FFT\}
-  let lin-tstop = \{Ti_FFT + (NFFT-1) * Ts_FFT\} $ end earlier
-  linearize vout
-  set specwindow = none
-  fft vout
+  *reset
+  *tran 0.001u 11u
+  *fourier 9.765625e5 vout
+  *let THD_db = db(fourier11[1][3]/fourier11[1][1])
+  *print THD_db
+  *let lin-tstart = \{Ti_FFT\} $ skip the start - up phase
+  *let lin-tstep = \{Ts_FFT\}
+  *let lin-tstop = \{Ti_FFT + (NFFT-1) * Ts_FFT\} $ end earlier
+  *linearize vout
+  *set specwindow = none
+ *fft vout
   *plot mag(vout)
-  plot db(mag(vout)) xlimit 0 20e6
+  *plot db(mag(vout)) xlimit 0 20e6
 
   reset
   op

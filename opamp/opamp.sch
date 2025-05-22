@@ -72,24 +72,24 @@ N 1020 -20 1130 -20 {lab=#net1}
 N 1130 -20 1210 -20 {lab=#net1}
 N 950 40 1020 40 {lab=vss}
 C {sky130_fd_pr/nfet_01v8.sym} 1310 -65 0 1 {name=M3
-L=1
-W=2.5
+L=4
+W=10
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=5
+nf=1 mult=10
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 1550 -65 0 0 {name=M4
-L=1
-W=2.5
+L=4
+W=10
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=5
+nf=1 mult=10
 model=nfet_01v8
 spiceprefix=X
 }
@@ -100,7 +100,7 @@ ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=2
+nf=1 mult=3
 model=pfet_01v8
 spiceprefix=X
 }
@@ -111,7 +111,7 @@ ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=14
+nf=1 mult=10
 model=pfet_01v8
 spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8.sym} 1070 -440 0 1 {name=M8
@@ -135,18 +135,7 @@ C {lab_pin.sym} 1767.5 -440 0 0 {name=l5 sig_type=std_logic lab=iref}
 C {lab_wire.sym} 1937.5 -240 0 0 {name=l8 sig_type=std_logic lab=vout
 }
 C {lab_wire.sym} 1450 -65 0 0 {name=l6 sig_type=std_logic lab=vbn}
-C {sky130_fd_pr/nfet_01v8.sym} 1720 -210 1 0 {name=M9
-L=0.15
-W=25
-ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
-as="'W * 0.29'" ps="'2 * (W + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-nf=1 mult=1
-model=nfet_01v8
-spiceprefix=X
-}
-C {lab_pin.sym} 1720 -250 2 0 {name=l9 sig_type=std_logic lab=vdd
+C {lab_pin.sym} 1720 -240 2 0 {name=l9 sig_type=std_logic lab=vdd
 }
 C {lab_pin.sym} 1720 -110 2 0 {name=l10 sig_type=std_logic lab=vss
 }
@@ -156,13 +145,13 @@ C {ipin.sym} 1180 -270 0 0 {name=p3 lab=vin_n}
 C {ipin.sym} 1670 -270 2 0 {name=p4 lab=vin_p}
 C {ipin.sym} 950 -360 0 0 {name=p5 lab=iref}
 C {sky130_fd_pr/nfet_01v8.sym} 1870 -60 0 0 {name=M6
-L=0.3
-W=12
+L=0.4
+W=25
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=20
+nf=1 mult=15
 model=nfet_01v8
 spiceprefix=X}
 C {lab_wire.sym} 1630 -190 0 0 {name=l3 sig_type=std_logic lab=voe1}
@@ -209,9 +198,9 @@ descr="gm= "}
 C {ngspice_probe.sym} 1750 -190 0 0 {name=r25}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 1270 -270 0 0 {name=M1
 L=1
-W=6
+W=5
 nf=1
-mult=20
+mult=15
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -223,9 +212,9 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 1590 -270 0 1 {name=M2
 L=1
-W=6
+W=5
 nf=1
-mult=20
+mult=15
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -237,9 +226,14 @@ spiceprefix=X
 }
 C {capa.sym} 1830 -190 3 0 {name=C1
 m=1
-value=1.4p
+value=1p
 footprint=1206
 device="ceramic capacitor"}
 C {ammeter.sym} 1020 10 0 0 {name=Vmeas savecurrent=true spice_ignore=0}
 C {ngspice_get_value.sym} 1530 -410 0 0 {name=r1 node=@M.X1.XM5.msky130_fd_pr__pfet_01v8[vth]
 descr="vth= "}
+C {res.sym} 1720 -190 1 0 {name=R7
+value=6.5k
+footprint=1206
+device=resistor
+m=1}
