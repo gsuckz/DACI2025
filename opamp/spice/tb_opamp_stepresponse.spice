@@ -1,0 +1,86 @@
+** sch_path: /foss/designs/DACI/opamp/tb_opamp_stepresponse.sch
+**.subckt tb_opamp_stepresponse
+V1 vss GND DC{vss}
+V2 vdd vss DC{vdd}
+V4 vstep vcm PULSE({-1*vstep} {vstep} 0.0 1p 1p {T/2} {T}) DC 1 AC 0
+C4 vstep vin_signal 1 m=1
+I0 net1 vss DC{iref}
+R1 vin vin_signal 500 m=1
+R3 vout vin 5k m=1
+C5 vin vss 3p m=1
+C1 vout vss 20p m=1
+V5 vcm vss DC{vcm}
+x1 vdd net1 vin vcm vout vss opamp
+**** begin user architecture code
+
+
+
+
+* Circuit Parameters
+.param iref = 100u
+.param vdd  = 1.8
+.param vss  = 0.0
+.param vcm  = 0.8
+.param vac  = 60m
+.param vstep = 60m
+.param T = 20u
+
+.options TEMP = 65.0
+
+* Include Models
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+*.lib $env(PDK_ROOT)/$env(PDK)/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+
+* OP Parameters & Singals to save
+.save all
+
+*Simulations
+.control
+  set color0 = white
+
+  tran 0.01u 20u
+  setplot tran1
+  plot v(vstep) v(vin_signal) v(vout)
+.endc
+
+.end
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  opamp.sym # of pins=6
+** sym_path: /foss/designs/DACI/opamp/opamp.sym
+** sch_path: /foss/designs/DACI/opamp/opamp.sch
+.subckt opamp vdd iref vin_n vin_p vout vss
+*.iopin vdd
+*.iopin vss
+*.ipin vin_n
+*.ipin vin_p
+*.ipin iref
+*.opin vout
+XM3 vbn vbn net1 net1 sky130_fd_pr__nfet_01v8 L=0.4 W=6 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM4 voe1 vbn net1 net1 sky130_fd_pr__nfet_01v8 L=0.4 W=6 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 vp iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=35 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
+XM7 vout iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=35 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=14 m=14
+XM8 iref iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=40 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM6 vout voe1 net1 net1 sky130_fd_pr__nfet_01v8 L=0.4 W=8 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=40 m=40
+XM1 vbn vin_n vp vp sky130_fd_pr__pfet_01v8_lvt L=.8 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
+XM2 voe1 vin_p vp vp sky130_fd_pr__pfet_01v8_lvt L=.8 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
+C1 net2 vout .4p m=1
+Vmeas net1 vss 0
+.save i(vmeas)
+R7 net2 voe1 1.8k m=1
+.ends
+
+.GLOBAL GND
+.end

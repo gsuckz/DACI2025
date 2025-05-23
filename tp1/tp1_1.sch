@@ -51,10 +51,10 @@ lab=d}
 N 420 130 420 180 {
 lab=GND}
 C {sky130_fd_pr/nfet_01v8.sym} 240 90 0 0 {name=M1
-L=0.15
-W=4
+L=0.6
+W=12
 nf=1 
-mult=1
+mult=40
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -183,6 +183,8 @@ value="
   plot @M.XM1.msky130_fd_pr__nfet_01v8[id] @M.XM2.msky130_fd_pr__nfet_01v8[id] @M.XM3.msky130_fd_pr__nfet_01v8[id] ylog ylabel log(Id) xlabel Vgs
   plot @M.XM1.msky130_fd_pr__nfet_01v8[gm]/@M.XM1.msky130_fd_pr__nfet_01v8[id] vs @M.XM1.msky130_fd_pr__nfet_01v8[id] xlog ylabel gm/Id xlabel Id
   plot @M.XM1.msky130_fd_pr__nfet_01v8[gm]/@M.XM1.msky130_fd_pr__nfet_01v8[id] vs @M.XM1.msky130_fd_pr__nfet_01v8[vgs] ylabel gm/Id xlabel Vgs
+  plot @M.XM1.msky130_fd_pr__nfet_01v8[gm] vs @M.XM1.msky130_fd_pr__nfet_01v8[id] xlog ylabel gm/Id xlabel Id
+  plot @M.XM1.msky130_fd_pr__nfet_01v8[gm] vs @M.XM1.msky130_fd_pr__nfet_01v8[vgs] ylabel gm/Id xlabel Vgs
   set filetype = ascii
   write tp1_1_dc2.raw
 
@@ -204,215 +206,6 @@ value="
 
 .end
 "}
-C {sky130_fd_pr/nfet_01v8.sym} 610 90 0 0 {name=M2
-L=2
-W=10
-nf=1 
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-v \{xschem version=3.4.5 file_version=1.2
-* Copyright 2021 Stefan Frederik Schippers
-* 
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-
-\}
-G \{\}
-K \{type=nmos
-lvs_format="@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult"
-format="@spiceprefix@name @pinlist @body sky130_fd_pr__@model L=@L W=@W
-+ nf=@nf ad=@ad as=@as pd=@pd ps=@ps
-+ nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd 
-+ mult=@mult m=@mult"
-template="name=M1
-L=0.15
-W=1
-body=GND
-nf=1
-mult=1
-ad=\\\\"'int((nf+1)/2) * W/nf * 0.29'\\\\" 
-pd=\\\\"'2*int((nf+1)/2) * (W/nf + 0.29)'\\\\"
-as=\\\\"'int((nf+2)/2) * W/nf * 0.29'\\\\" 
-ps=\\\\"'2*int((nf+2)/2) * (W/nf + 0.29)'\\\\"
-nrd=\\\\"'0.29 / W'\\\\" nrs=\\\\"'0.29 / W'\\\\"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-"\}
-V \{\}
-S \{\}
-E \{\}
-L 4 7.5 -22.5 7.5 22.5 \{\}
-L 4 -20 0 2.5 0 \{\}
-L 4 20 -30 20 -17.5 \{\}
-L 4 20 17.5 20 30 \{\}
-L 4 2.5 -15 2.5 15 \{\}
-L 4 7.5 -17.5 20 -17.5 \{\}
-L 4 7.5 17.5 15 17.5 \{\}
-L 4 7.5 -10 12.5 -10 \{\}
-B 5 17.5 -32.5 22.5 -27.5 \{name=D dir=inout\}
-B 5 -22.5 -2.5 -17.5 2.5 \{name=G dir=in\}
-B 5 17.5 27.5 22.5 32.5 \{name=S dir=inout\}
-P 4 4 15 15 20 17.5 15 20 15 15 \{fill=true\}
-T \{@name\} 5 -30 0 1 0.2 0.2 \{\}
-T \{S\} 22.5 17.5 0 0 0.15 0.15 \{layer=7\}
-T \{D\} 22.5 -17.5 2 1 0.15 0.15 \{layer=7\}
-T \{G\} -10 -10 0 1 0.15 0.15 \{layer=7\}
-T \{@mult x @W / @L\} 31.25 13.75 0 0 0.2 0.2 \{ layer=13\}
-T \{nf=@nf\} 31.25 1.25 0 0 0.2 0.2 \{ layer=13\}
-T \{@model\} 30 -17.5 2 1 0.2 0.2 \{\}
-T \{tcleval(gm=[to_eng [ngspice::get_node [subst -nocommand \\\{\\\\@m.$\\\{path\\\}@spiceprefix@name\\\\.msky130_fd_pr__@model\\\\[gm]\\\}]]] )\} 30 -50 0 0 0.15 0.15 \{layer=15
-hide=true\}
-T \{tcleval(id=[to_eng [ngspice::get_node [subst -nocommand \\\{i(\\\\@m.$\\\{path\\\}@spiceprefix@name\\\\.msky130_fd_pr__@model\\\\[id])\\\}]]] )\} 30 -40 0 0 0.15 0.15 \{layer=15
-hide=true\}
-T \{@body\} 12.5 -3.75 2 1 0.2 0.2 \{ layer=1\}
-v \{xschem version=3.4.5 file_version=1.2
-* Copyright 2021 Stefan Frederik Schippers
-* 
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-
-\}
-G \{\}
-K \{type=nmos
-lvs_format="@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult"
-format="@spiceprefix@name @pinlist @body sky130_fd_pr__@model L=@L W=@W
-+ nf=@nf ad=@ad as=@as pd=@pd ps=@ps
-+ nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd 
-+ mult=@mult m=@mult"
-template="name=M1
-L=0.15
-W=1
-body=GND
-nf=1
-mult=1
-ad=\\\\"'int((nf+1)/2) * W/nf * 0.29'\\\\" 
-pd=\\\\"'2*int((nf+1)/2) * (W/nf + 0.29)'\\\\"
-as=\\\\"'int((nf+2)/2) * W/nf * 0.29'\\\\" 
-ps=\\\\"'2*int((nf+2)/2) * (W/nf + 0.29)'\\\\"
-nrd=\\\\"'0.29 / W'\\\\" nrs=\\\\"'0.29 / W'\\\\"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-"\}
-V \{\}
-S \{\}
-E \{\}
-L 4 7.5 -22.5 7.5 22.5 \{\}
-L 4 -20 0 2.5 0 \{\}
-L 4 20 -30 20 -17.5 \{\}
-L 4 20 17.5 20 30 \{\}
-L 4 2.5 -15 2.5 15 \{\}
-L 4 7.5 -17.5 20 -17.5 \{\}
-L 4 7.5 17.5 15 17.5 \{\}
-L 4 7.5 -10 12.5 -10 \{\}
-B 5 17.5 -32.5 22.5 -27.5 \{name=D dir=inout\}
-B 5 -22.5 -2.5 -17.5 2.5 \{name=G dir=in\}
-B 5 17.5 27.5 22.5 32.5 \{name=S dir=inout\}
-P 4 4 15 15 20 17.5 15 20 15 15 \{fill=true\}
-T \{@name\} 5 -30 0 1 0.2 0.2 \{\}
-T \{S\} 22.5 17.5 0 0 0.15 0.15 \{layer=7\}
-T \{D\} 22.5 -17.5 2 1 0.15 0.15 \{layer=7\}
-T \{G\} -10 -10 0 1 0.15 0.15 \{layer=7\}
-T \{@mult x @W / @L\} 31.25 13.75 0 0 0.2 0.2 \{ layer=13\}
-T \{nf=@nf\} 31.25 1.25 0 0 0.2 0.2 \{ layer=13\}
-T \{@model\} 30 -17.5 2 1 0.2 0.2 \{\}
-T \{tcleval(gm=[to_eng [ngspice::get_node [subst -nocommand \\\{\\\\@m.$\\\{path\\\}@spiceprefix@name\\\\.msky130_fd_pr__@model\\\\[gm]\\\}]]] )\} 30 -50 0 0 0.15 0.15 \{layer=15
-hide=true\}
-T \{tcleval(id=[to_eng [ngspice::get_node [subst -nocommand \\\{i(\\\\@m.$\\\{path\\\}@spiceprefix@name\\\\.msky130_fd_pr__@model\\\\[id])\\\}]]] )\} 30 -40 0 0 0.15 0.15 \{layer=15
-hide=true\}
-T \{@body\} 12.5 -3.75 2 1 0.2 0.2 \{ layer=1\}
-v \{xschem version=3.4.5 file_version=1.2
-* Copyright 2021 Stefan Frederik Schippers
-* 
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-
-\}
-G \{\}
-K \{type=nmos
-lvs_format="@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult"
-format="@spiceprefix@name @pinlist @body sky130_fd_pr__@model L=@L W=@W
-+ nf=@nf ad=@ad as=@as pd=@pd ps=@ps
-+ nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd 
-+ mult=@mult m=@mult"
-template="name=M1
-L=0.15
-W=1
-body=GND
-nf=1
-mult=1
-ad=\\\\"'int((nf+1)/2) * W/nf * 0.29'\\\\" 
-pd=\\\\"'2*int((nf+1)/2) * (W/nf + 0.29)'\\\\"
-as=\\\\"'int((nf+2)/2) * W/nf * 0.29'\\\\" 
-ps=\\\\"'2*int((nf+2)/2) * (W/nf + 0.29)'\\\\"
-nrd=\\\\"'0.29 / W'\\\\" nrs=\\\\"'0.29 / W'\\\\"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-"\}
-V \{\}
-S \{\}
-E \{\}
-L 4 7.5 -22.5 7.5 22.5 \{\}
-L 4 -20 0 2.5 0 \{\}
-L 4 20 -30 20 -17.5 \{\}
-L 4 20 17.5 20 30 \{\}
-L 4 2.5 -15 2.5 15 \{\}
-L 4 7.5 -17.5 20 -17.5 \{\}
-L 4 7.5 17.5 15 17.5 \{\}
-L 4 7.5 -10 12.5 -10 \{\}
-B 5 17.5 -32.5 22.5 -27.5 \{name=D dir=inout\}
-B 5 -22.5 -2.5 -17.5 2.5 \{name=G dir=in\}
-B 5 17.5 27.5 22.5 32.5 \{name=S dir=inout\}
-P 4 4 15 15 20 17.5 15 20 15 15 \{fill=true\}
-T \{@name\} 5 -30 0 1 0.2 0.2 \{\}
-T \{S\} 22.5 17.5 0 0 0.15 0.15 \{layer=7\}
-T \{D\} 22.5 -17.5 2 1 0.15 0.15 \{layer=7\}
-T \{G\} -10 -10 0 1 0.15 0.15 \{layer=7\}
-T \{@mult x @W / @L\} 31.25 13.75 0 0 0.2 0.2 \{ layer=13\}
-T \{nf=@nf\} 31.25 1.25 0 0 0.2 0.2 \{ layer=13\}
-T \{@model\} 30 -17.5 2 1 0.2 0.2 \{\}
-T \{tcleval(gm=[to_eng [ngspice::get_node [subst -nocommand \\\{\\\\@m.$\\\{path\\\}@spiceprefix@name\\\\.msky130_fd_pr__@model\\\\[gm]\\\}]]] )\} 30 -50 0 0 0.15 0.15 \{layer=15
-hide=true\}
-T \{tcleval(id=[to_eng [ngspice::get_node [subst -nocommand \\\{i(\\\\@m.$\\\{path\\\}@spiceprefix@name\\\\.msky130_fd_pr__@model\\\\[id])\\\}]]] )\} 30 -40 0 0 0.15 0.15 \{layer=15
-hide=true\}
-T \{@body\} 12.5 -3.75 2 1 0.2 0.2 \{ layer=1\}
-}
 C {lab_wire.sym} 550 90 0 0 {name=l5 sig_type=std_logic lab=g}
 C {sky130_fd_pr/nfet_01v8.sym} 890 90 0 0 {name=M3
 L=4
@@ -434,3 +227,17 @@ descr=Anotar
  tclcommand="ngspice::annotate"}
 C {ngspice_get_value.sym} 350 -50 0 0 {name=r6 node=@M.XM1.msky130_fd_pr__nfet_01v8[cgg]
 descr="Vth="}
+C {sky130_fd_pr/nfet_01v8.sym} 610 90 0 0 {name=M2
+L=4
+W=20
+nf=1 
+mult=40
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}

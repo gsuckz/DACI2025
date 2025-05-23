@@ -1,0 +1,30 @@
+** sch_path: /foss/designs/DACI/opamp/opamp.sch
+**.subckt opamp vdd iref vin_n vin_p vout vss
+*.iopin vdd
+*.iopin vss
+*.ipin vin_n
+*.ipin vin_p
+*.ipin iref
+*.opin vout
+XM3 vbn vbn net1 net1 sky130_fd_pr__nfet_01v8 L=0.4 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=12 m=12
+XM4 voe1 vbn net1 net1 sky130_fd_pr__nfet_01v8 L=0.4 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=12 m=12
+XM5 vp iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=15 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=3 m=3
+XM7 vout iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=30 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=25 m=25
+XM8 iref iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=30 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=3 m=3
+XM1 vbn vin_n vp vp sky130_fd_pr__pfet_01v8_lvt L=0.4 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
+XM2 voe1 vin_p vp vp sky130_fd_pr__pfet_01v8_lvt L=0.4 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
+C1 net2 vout .5p m=1
+Vmeas net1 vss 0
+.save i(vmeas)
+R7 net2 voe1 1409 m=1
+XM6 vout voe1 net1 net1 sky130_fd_pr__nfet_01v8 L=0.3 W=20 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=60 m=60
+**.ends
+.end

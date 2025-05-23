@@ -1,0 +1,92 @@
+** sch_path: /foss/designs/DACI/opamp/tb_opamp_openloop2.sch
+**.subckt tb_opamp_openloop2
+V1 vss GND DC{vss}
+V2 vdd vss DC{vdd}
+V3 vcm vss DC{vcm}
+V4 vsen vcm sin(0 {vac} {fin}) dc 0 ac 1
+C4 vsen vin 1 m=1
+I0 iref vss DC{iref}
+R1 ve vcm 500 m=1
+R3 vout ve 5k m=1
+C5 vin vss 3p m=1
+C1 vout vss 20p m=1
+R6 vin ve 10G m=1
+XM3 vbn vbn net1 net1 sky130_fd_pr__nfet_01v8 L=0.4 W=6 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM4 voe1 vbn net1 net1 sky130_fd_pr__nfet_01v8 L=0.4 W=6 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 vp iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=30 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM7 vout iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=35 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=14 m=14
+XM8 iref iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=40 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM6 vout voe1 net1 net1 sky130_fd_pr__nfet_01v8 L=0.4 W=8 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=40 m=40
+XM1 vbn vin vp vp sky130_fd_pr__pfet_01v8_lvt L=.8 W=6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
+XM2 voe1 vcm vp vp sky130_fd_pr__pfet_01v8_lvt L=.8 W=6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
+C2 net2 vout .4p m=1
+Vmeas net1 vss 0
+.save i(vmeas)
+R29 net2 voe1 1.8k m=1
+**** begin user architecture code
+
+
+
+
+* Circuit Parameters
+.param iref = 100u
+.param vdd  = 1.8
+.param vss  = 0.0
+.param vcm  = 0.8
+.param vac  = 10m
+.param fin  = 9.765625e5
+.options TEMP = 65.0
+
+* Include Models
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+* OP Parameters & Singals to save
+.save all
++ @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[id] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vth] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vgs] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vds] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vdsat] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[gm] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[gds]
++ @M.X1.XM2.msky130_fd_pr__pfet_01v8_lvt[id] @M.X1.XM2.msky130_fd_pr__pfet_01v8_lvt[vth] @M.X1.XM2.msky130_fd_pr__pfet_01v8_lvt[vgs] @M.X1.XM2.msky130_fd_pr__pfet_01v8_lvt[vds] @M.X1.XM2.msky130_fd_pr__pfet_01v8_lvt[vdsat] @M.X1.XM2.msky130_fd_pr__pfet_01v8_lvt[gm] @M.X1.XM2.msky130_fd_pr__pfet_01v8_lvt[gds]
++ @M.X1.XM3.msky130_fd_pr__nfet_01v8[id] @M.X1.XM3.msky130_fd_pr__nfet_01v8[vth] @M.X1.XM3.msky130_fd_pr__nfet_01v8[vgs] @M.X1.XM3.msky130_fd_pr__nfet_01v8[vds] @M.X1.XM3.msky130_fd_pr__nfet_01v8[vdsat] @M.X1.XM3.msky130_fd_pr__nfet_01v8[gm] @M.X1.XM3.msky130_fd_pr__nfet_01v8[gds]
++ @M.X1.XM4.msky130_fd_pr__nfet_01v8[id] @M.X1.XM4.msky130_fd_pr__nfet_01v8[vth] @M.X1.XM4.msky130_fd_pr__nfet_01v8[vgs] @M.X1.XM4.msky130_fd_pr__nfet_01v8[vds] @M.X1.XM4.msky130_fd_pr__nfet_01v8[vdsat] @M.X1.XM4.msky130_fd_pr__nfet_01v8[gm] @M.X1.XM4.msky130_fd_pr__nfet_01v8[gds]
++ @M.X1.XM5.msky130_fd_pr__pfet_01v8[id] @M.X1.XM5.msky130_fd_pr__pfet_01v8[vth] @M.X1.XM5.msky130_fd_pr__pfet_01v8[vgs] @M.X1.XM5.msky130_fd_pr__pfet_01v8[vds] @M.X1.XM5.msky130_fd_pr__pfet_01v8[vdsat] @M.X1.XM5.msky130_fd_pr__pfet_01v8[gm] @M.X1.XM5.msky130_fd_pr__pfet_01v8[gds]
++ @M.X1.XM6.msky130_fd_pr__nfet_01v8[id] @M.X1.XM6.msky130_fd_pr__nfet_01v8[vth] @M.X1.XM6.msky130_fd_pr__nfet_01v8[vgs] @M.X1.XM6.msky130_fd_pr__nfet_01v8[vds] @M.X1.XM6.msky130_fd_pr__nfet_01v8[vdsat] @M.X1.XM6.msky130_fd_pr__nfet_01v8[gm] @M.X1.XM6.msky130_fd_pr__nfet_01v8[gds]
++ @M.X1.XM7.msky130_fd_pr__pfet_01v8[id] @M.X1.XM7.msky130_fd_pr__pfet_01v8[vth] @M.X1.XM7.msky130_fd_pr__pfet_01v8[vgs] @M.X1.XM7.msky130_fd_pr__pfet_01v8[vds] @M.X1.XM7.msky130_fd_pr__pfet_01v8[vdsat] @M.X1.XM7.msky130_fd_pr__pfet_01v8[gm] @M.X1.XM7.msky130_fd_pr__pfet_01v8[gds]
++ @M.X1.XM8.msky130_fd_pr__pfet_01v8[id] @M.X1.XM8.msky130_fd_pr__pfet_01v8[vth] @M.X1.XM8.msky130_fd_pr__pfet_01v8[vgs] @M.X1.XM8.msky130_fd_pr__pfet_01v8[vds] @M.X1.XM8.msky130_fd_pr__pfet_01v8[vdsat] @M.X1.XM8.msky130_fd_pr__pfet_01v8[gm] @M.X1.XM8.msky130_fd_pr__pfet_01v8[gds]
++ @M.X1.XM9.msky130_fd_pr__nfet_01v8[id] @M.X1.XM9.msky130_fd_pr__nfet_01v8[vth] @M.X1.XM9.msky130_fd_pr__nfet_01v8[vgs] @M.X1.XM9.msky130_fd_pr__nfet_01v8[vds] @M.X1.XM9.msky130_fd_pr__nfet_01v8[vdsat] @M.X1.XM9.msky130_fd_pr__nfet_01v8[gm] @M.X1.XM9.msky130_fd_pr__nfet_01v8[gds]
+
+*Simulation
+.control
+  set color0 = white
+
+  ac dec 100 1 10G
+  setplot ac1
+  meas ac GBW when vdb(vout)=0
+  meas ac DCG find vdb(vout) at=1
+  meas ac PM find vp(vout) when vdb(vout)=0
+  print PM*180/PI
+  meas ac GM find vdb(vout) when vp(vout)=0
+  plot vdb(vout) {vp(vout)*180/PI}
+  plot vdb(voe1) {vp(voe1)*180/PI}
+  write tb_opamp_openloop_ac2.raw
+
+  reset
+  op
+  setplot op1
+  unset filetype
+  write tb_opamp_openloop2.raw
+.endc
+
+.end
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

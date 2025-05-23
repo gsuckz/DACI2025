@@ -1,5 +1,4 @@
-v {xschem version=3.4.6RC file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -32,12 +31,14 @@ N 1530 -390 1530 -310 { lab=vcm}
 N 1530 -390 1540 -390 { lab=vcm}
 N 1510 -430 1590 -430 { lab=vin}
 N 1590 -620 1780 -620 { lab=vout}
-N 1780 -620 1780 -410 { lab=vout}
 N 1340 -620 1530 -620 { lab=ve}
 N 1650 -510 1650 -460 {
 lab=vdd}
 N 1670 -370 1670 -320 {
 lab=vss}
+N 1780 -620 1990 -620 {lab=vout}
+N 1990 -620 1990 -420 {lab=vout}
+N 1780 -410 1990 -420 {lab=vout}
 C {vsource.sym} 1130 -170 0 0 {name=V1 value=DC\{vss\}}
 C {vsource.sym} 1220 -170 0 0 {name=V2 value=DC\{vdd\}}
 C {vsource.sym} 1530 -280 0 0 {name=V3 value=DC\{vcm\}}
@@ -94,6 +95,7 @@ value="
 
 * Include Models
 *.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
 .lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 * OP Parameters & Singals to save
 .save all
@@ -118,7 +120,7 @@ value="
   meas ac PM find vp(vout) when vdb(vout)=0
   print PM*180/PI
   meas ac GM find vdb(vout) when vp(vout)=0
-  plot vdb(vout) \{vp(vout)*180/PI\}
+  plot vdb(vout) \{vp(vout)*180/PI\} vdb(v1) \{vp(v1)*180/PI\}
   write tb_opamp_openloop_ac1.raw
 
   reset
@@ -154,7 +156,8 @@ C {ngspice_probe.sym} 1520 -430 2 0 {name=r3}
 C {ngspice_probe.sym} 1580 -390 2 0 {name=r4}
 C {ngspice_probe.sym} 1270 -480 0 0 {name=r5}
 C {res.sym} 1370 -430 1 0 {name=R6
-value=10G
+value=1G
 footprint=1206
 device=resistor
 m=1}
+C {lab_wire.sym} 1780 -450 0 0 {name=l7 sig_type=std_logic lab=v1}

@@ -79,8 +79,8 @@ value="
 .param vdd  = 1.8
 .param vss  = 0.0
 .param vcm  = 0.8
-.param vac  = 10m
-.param vstep = 10m
+.param vac  = 60m
+.param vstep = 60m
 .param T = 20u
 
 .options TEMP = 65.0
