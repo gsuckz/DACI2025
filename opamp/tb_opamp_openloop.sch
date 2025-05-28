@@ -1,4 +1,5 @@
-v {xschem version=3.4.6 file_version=1.2}
+v {xschem version=3.4.6RC file_version=1.2
+}
 G {}
 K {}
 V {}
@@ -155,9 +156,9 @@ C {ngspice_probe.sym} 1630 -330 2 0 {name=r2}
 C {ngspice_probe.sym} 1520 -430 2 0 {name=r3}
 C {ngspice_probe.sym} 1580 -390 2 0 {name=r4}
 C {ngspice_probe.sym} 1270 -480 0 0 {name=r5}
+C {lab_wire.sym} 1780 -450 0 0 {name=l7 sig_type=std_logic lab=v1}
 C {res.sym} 1370 -430 1 0 {name=R6
 value=1G
 footprint=1206
 device=resistor
 m=1}
-C {lab_wire.sym} 1780 -450 0 0 {name=l7 sig_type=std_logic lab=v1}
