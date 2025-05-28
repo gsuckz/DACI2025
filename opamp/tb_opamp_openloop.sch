@@ -1,5 +1,4 @@
-v {xschem version=3.4.6RC file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -86,18 +85,18 @@ value="
 
 
 * Circuit Parameters
-.param iref = 100u
-.param vdd  = 1.8
+.param iref = 95u
+.param vdd  = 1.63
 .param vss  = 0.0
-.param vcm  = 0.8
-.param vac  = 10m
+.param vcm  = 0.72
+.param vac  = 60m
 .param fin  = 9.765625e5
-.options TEMP = 65.0
+.options TEMP = 125.0
 
 * Include Models
 *.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
-*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
-.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ss
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 * OP Parameters & Singals to save
 .save all
 + @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[id] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vth] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vgs] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vds] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vdsat] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[gm] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[gds]

@@ -18,18 +18,18 @@ R6 vin ve 1G m=1
 
 
 * Circuit Parameters
-.param iref = 100u
-.param vdd  = 1.8
+.param iref = 95u
+.param vdd  = 1.63
 .param vss  = 0.0
-.param vcm  = 0.8
-.param vac  = 10m
+.param vcm  = 0.72
+.param vac  = 60m
 .param fin  = 9.765625e5
-.options TEMP = 65.0
+.options TEMP = 125.0
 
 * Include Models
 *.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
-*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
-.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ss
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 * OP Parameters & Singals to save
 .save all
 + @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[id] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vth] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vgs] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vds] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vdsat] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[gm] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[gds]
@@ -81,25 +81,25 @@ R6 vin ve 1G m=1
 *.opin vout
 *.opin v1
 XM5 vp iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=50 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
-+ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=25 m=25
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=24 m=24
 XM7 vout iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=50 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
-+ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=27 m=27
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=28 m=28
 XM8 iref iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=50 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
 + nrs='0.29 / W' sa=0 sb=0 sd=0 mult=3 m=3
-XM1 vbn vin_n vp vp sky130_fd_pr__pfet_01v8_lvt L=0.6 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=4 m=4
-XM2 v1 vin_p vp vp sky130_fd_pr__pfet_01v8_lvt L=0.6 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=4 m=4
-C1 net2 vout 6p m=1
+XM1 vbn vin_n vp vp sky130_fd_pr__pfet_01v8_lvt L=0.55 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=6 m=6
+XM2 v1 vin_p vp vp sky130_fd_pr__pfet_01v8_lvt L=0.55 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=6 m=6
+C1 net2 vout 5p m=1
 Vmeas net1 vss 0
 .save i(vmeas)
-R7 net2 v1 500 m=1
-XM6 vout v1 net1 net1 sky130_fd_pr__nfet_01v8 L=0.3 W=60 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
-+ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=20 m=20
-XM4 v1 vbn net1 net1 sky130_fd_pr__nfet_01v8 L=3 W=45 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
-+ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
-XM3 vbn vbn net1 net1 sky130_fd_pr__nfet_01v8 L=3 W=45 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
-+ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
+R7 net2 v1 400 m=1
+XM6 vout v1 net1 net1 sky130_fd_pr__nfet_01v8 L=0.5 W=60 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=6 m=6
+XM4 v1 vbn net1 net1 sky130_fd_pr__nfet_01v8 L=2 W=50 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM3 vbn vbn net1 net1 sky130_fd_pr__nfet_01v8 L=2 W=50 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 .ends
 
 .GLOBAL GND

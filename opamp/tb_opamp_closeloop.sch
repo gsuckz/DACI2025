@@ -1,5 +1,4 @@
-v {xschem version=3.4.6RC file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -71,19 +70,19 @@ m=1
 value=3p
 footprint=1206
 device="ceramic capacitor"}
-C {netlist_not_shown.sym} 660 -530 0 0 {name=SIMULATION only_toplevel=false 
+C {netlist_not_shown.sym} 650 -530 0 0 {name=SIMULATION only_toplevel=false 
 
 value="
 
 
 * Circuit Parameters
-.param iref = 100u
-.param vdd  = 1.8
+.param iref = 95u
+.param vdd  = 1.63
 .param vss  = 0.0
-.param vcm  = 0.8
-.param vac  = 10m
+.param vcm  = 0.72
+.param vac  = 60m
 .param fin  = 9.765625e5
-.options TEMP = 65.0
+.options TEMP = 125
 
 * FFT Parameters
 .param Ts_FFT     = 1e-9
@@ -97,7 +96,10 @@ value="
 
 * Include Models
 *.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
-.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ff
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 * OP Parameters & Singals to save
 .save all
 + @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[id] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vth] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vgs] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vds] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vdsat] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[gm] @M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[gds]
