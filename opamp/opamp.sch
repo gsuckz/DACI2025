@@ -1,4 +1,5 @@
-v {xschem version=3.4.6 file_version=1.2}
+v {xschem version=3.4.6RC file_version=1.2
+}
 G {}
 K {}
 V {}
@@ -79,7 +80,7 @@ ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=9
+nf=1 mult=12
 model=pfet_01v8
 spiceprefix=X
 }
@@ -90,7 +91,7 @@ ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=28
+nf=1 mult=33
 model=pfet_01v8
 spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8.sym} 1070 -440 0 1 {name=M8
@@ -169,7 +170,7 @@ C {sky130_fd_pr/pfet_01v8_lvt.sym} 1270 -270 0 0 {name=M1
 L=0.55
 W=50
 nf=1
-mult=8
+mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -183,7 +184,7 @@ C {sky130_fd_pr/pfet_01v8_lvt.sym} 1590 -270 0 1 {name=M2
 L=0.55
 W=50
 nf=1
-mult=8
+mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -195,25 +196,25 @@ spiceprefix=X
 }
 C {capa.sym} 1830 -190 3 0 {name=C1
 m=1
-value=20p
+value=1.87p
 footprint=1206
 device="ceramic capacitor"}
 C {ammeter.sym} 1020 10 0 0 {name=Vmeas savecurrent=true spice_ignore=0}
 C {ngspice_get_value.sym} 1530 -410 0 0 {name=r1 node=@M.X1.XM5.msky130_fd_pr__pfet_01v8[vth]
 descr="vth= "}
 C {res.sym} 1720 -190 1 0 {name=R7
-value=1000
+value=1.35k
 footprint=787.45
 device=resistor
 m=1}
 C {sky130_fd_pr/nfet_01v8.sym} 1870 -60 0 0 {name=M6
-L=0.4
-W=60
+L=0.3
+W=35
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=10
+nf=1 mult=20
 model=nfet_01v8
 spiceprefix=X}
 C {lab_pin.sym} 1460 -300 2 0 {name=l7 sig_type=std_logic lab=vss
@@ -221,7 +222,7 @@ C {lab_pin.sym} 1460 -300 2 0 {name=l7 sig_type=std_logic lab=vss
 C {opin.sym} 1570 -220 0 0 {name=p7 lab=v1}
 C {sky130_fd_pr/nfet_01v8.sym} 1550 -65 0 0 {name=M4
 L=2.2
-W=50
+W=30
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
@@ -231,7 +232,7 @@ model=nfet_01v8
 spiceprefix=X}
 C {sky130_fd_pr/nfet_01v8.sym} 1310 -65 0 1 {name=M3
 L=2.2
-W=50
+W=30
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
