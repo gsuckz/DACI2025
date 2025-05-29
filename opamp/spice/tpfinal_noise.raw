@@ -1,12 +1,12 @@
-Title: ** sch_path: /foss/designs/daci2025/opamp/tb_opamp_closeloop.sch
-Date: Thu May 29 07:15:04  2025
+Title: ** sch_path: /foss/designs/daci2025/opamp/fftb_opamp_closeloop.sch
+Date: Thu May 29 20:30:41  2025
 Command: ngspice-44.2, Build Tue Mar 18 10:43:20 UTC 2025
 Plotname: Integrated Noise
 Flags: real
-No. Variables: 307
+No. Variables: 329
 No. Points: 1
 Variables:
-	0	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rd)	voltage
+	0	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rd)	voltage
 	1	@m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt[gds]	admittance
 	2	@m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt[gm]	admittance
 	3	i(@m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt[id])	current
@@ -63,13 +63,13 @@ Variables:
 	54	v(@m.x1.xm8.msky130_fd_pr__pfet_01v8[vdsat])	voltage
 	55	v(@m.x1.xm8.msky130_fd_pr__pfet_01v8[vgs])	voltage
 	56	v(@m.x1.xm8.msky130_fd_pr__pfet_01v8[vth])	voltage
-	57	@m.x1.xm9.msky130_fd_pr__nfet_01v8[gds]	admittance dims=0
-	58	@m.x1.xm9.msky130_fd_pr__nfet_01v8[gm]	admittance dims=0
-	59	i(@m.x1.xm9.msky130_fd_pr__nfet_01v8[id])	current dims=0
-	60	v(@m.x1.xm9.msky130_fd_pr__nfet_01v8[vds])	voltage dims=0
-	61	v(@m.x1.xm9.msky130_fd_pr__nfet_01v8[vdsat])	voltage dims=0
-	62	v(@m.x1.xm9.msky130_fd_pr__nfet_01v8[vgs])	voltage dims=0
-	63	v(@m.x1.xm9.msky130_fd_pr__nfet_01v8[vth])	voltage dims=0
+	57	@m.x1.xm9.msky130_fd_pr__nfet_01v8[gds]	admittance
+	58	@m.x1.xm9.msky130_fd_pr__nfet_01v8[gm]	admittance
+	59	i(@m.x1.xm9.msky130_fd_pr__nfet_01v8[id])	current
+	60	v(@m.x1.xm9.msky130_fd_pr__nfet_01v8[vds])	voltage
+	61	v(@m.x1.xm9.msky130_fd_pr__nfet_01v8[vdsat])	voltage
+	62	v(@m.x1.xm9.msky130_fd_pr__nfet_01v8[vgs])	voltage
+	63	v(@m.x1.xm9.msky130_fd_pr__nfet_01v8[vth])	voltage
 	64	v(inoise_total)	voltage
 	65	v(inoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt)	voltage
 	66	v(inoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.1overf)	voltage
@@ -183,442 +183,486 @@ Variables:
 	174	v(inoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rd)	voltage
 	175	v(inoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rg)	voltage
 	176	v(inoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rs)	voltage
-	177	v(inoise_total_r.x1.r7)	voltage
-	178	v(inoise_total_r.x1.r7_1overf)	voltage
-	179	v(inoise_total_r.x1.r7_thermal)	voltage
-	180	v(inoise_total_r1)	voltage
-	181	v(inoise_total_r1_1overf)	voltage
-	182	v(inoise_total_r1_thermal)	voltage
-	183	v(inoise_total_r3)	voltage
-	184	v(inoise_total_r3_1overf)	voltage
-	185	v(inoise_total_r3_thermal)	voltage
-	186	v(onoise_total)	voltage
-	187	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt)	voltage
-	188	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.1overf)	voltage
-	189	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.id)	voltage
-	190	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.igb)	voltage
-	191	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.igd)	voltage
-	192	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.igs)	voltage
-	193	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rbdb)	voltage
-	194	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rbpb)	voltage
-	195	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rbpd)	voltage
-	196	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rbps)	voltage
-	197	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rbsb)	voltage
-	198	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rd)	voltage
-	199	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rg)	voltage
-	200	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rs)	voltage
-	201	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt)	voltage
-	202	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.1overf)	voltage
-	203	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.id)	voltage
-	204	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.igb)	voltage
-	205	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.igd)	voltage
-	206	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.igs)	voltage
-	207	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rbdb)	voltage
-	208	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rbpb)	voltage
-	209	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rbpd)	voltage
-	210	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rbps)	voltage
-	211	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rbsb)	voltage
-	212	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rd)	voltage
-	213	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rg)	voltage
-	214	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rs)	voltage
-	215	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8)	voltage
-	216	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.1overf)	voltage
-	217	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.id)	voltage
-	218	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.igb)	voltage
-	219	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.igd)	voltage
-	220	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.igs)	voltage
-	221	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rbdb)	voltage
-	222	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rbpb)	voltage
-	223	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rbpd)	voltage
-	224	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rbps)	voltage
-	225	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rbsb)	voltage
-	226	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rg)	voltage
-	227	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rs)	voltage
-	228	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8)	voltage
-	229	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.1overf)	voltage
-	230	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.id)	voltage
-	231	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.igb)	voltage
-	232	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.igd)	voltage
-	233	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.igs)	voltage
-	234	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rbdb)	voltage
-	235	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rbpb)	voltage
-	236	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rbpd)	voltage
-	237	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rbps)	voltage
-	238	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rbsb)	voltage
-	239	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rd)	voltage
-	240	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rg)	voltage
-	241	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rs)	voltage
-	242	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8)	voltage
-	243	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.1overf)	voltage
-	244	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.id)	voltage
-	245	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.igb)	voltage
-	246	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.igd)	voltage
-	247	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.igs)	voltage
-	248	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rbdb)	voltage
-	249	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rbpb)	voltage
-	250	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rbpd)	voltage
-	251	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rbps)	voltage
-	252	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rbsb)	voltage
-	253	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rd)	voltage
-	254	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rg)	voltage
-	255	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rs)	voltage
-	256	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8)	voltage
-	257	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.1overf)	voltage
-	258	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.id)	voltage
-	259	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.igb)	voltage
-	260	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.igd)	voltage
-	261	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.igs)	voltage
-	262	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rbdb)	voltage
-	263	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rbpb)	voltage
-	264	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rbpd)	voltage
-	265	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rbps)	voltage
-	266	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rbsb)	voltage
-	267	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rd)	voltage
-	268	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rg)	voltage
-	269	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rs)	voltage
-	270	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8)	voltage
-	271	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.1overf)	voltage
-	272	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.id)	voltage
-	273	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.igb)	voltage
-	274	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.igd)	voltage
-	275	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.igs)	voltage
-	276	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rbdb)	voltage
-	277	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rbpb)	voltage
-	278	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rbpd)	voltage
-	279	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rbps)	voltage
-	280	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rbsb)	voltage
-	281	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rd)	voltage
-	282	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rg)	voltage
-	283	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rs)	voltage
-	284	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8)	voltage
-	285	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.1overf)	voltage
-	286	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.id)	voltage
-	287	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.igb)	voltage
-	288	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.igd)	voltage
-	289	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.igs)	voltage
-	290	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rbdb)	voltage
-	291	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rbpb)	voltage
-	292	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rbpd)	voltage
-	293	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rbps)	voltage
-	294	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rbsb)	voltage
-	295	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rd)	voltage
-	296	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rg)	voltage
-	297	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rs)	voltage
-	298	v(onoise_total_r.x1.r7)	voltage
-	299	v(onoise_total_r.x1.r7_1overf)	voltage
-	300	v(onoise_total_r.x1.r7_thermal)	voltage
-	301	v(onoise_total_r1)	voltage
-	302	v(onoise_total_r1_1overf)	voltage
-	303	v(onoise_total_r1_thermal)	voltage
-	304	v(onoise_total_r3)	voltage
-	305	v(onoise_total_r3_1overf)	voltage
-	306	v(onoise_total_r3_thermal)	voltage
+	177	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8)	voltage
+	178	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.1overf)	voltage
+	179	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.id)	voltage
+	180	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.igb)	voltage
+	181	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.igd)	voltage
+	182	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.igs)	voltage
+	183	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rbdb)	voltage
+	184	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rbpb)	voltage
+	185	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rbpd)	voltage
+	186	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rbps)	voltage
+	187	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rbsb)	voltage
+	188	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rd)	voltage
+	189	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rg)	voltage
+	190	v(inoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rs)	voltage
+	191	v(inoise_total_r1)	voltage
+	192	v(inoise_total_r1_1overf)	voltage
+	193	v(inoise_total_r1_thermal)	voltage
+	194	v(inoise_total_r3)	voltage
+	195	v(inoise_total_r3_1overf)	voltage
+	196	v(inoise_total_r3_thermal)	voltage
+	197	v(onoise_total)	voltage
+	198	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt)	voltage
+	199	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.1overf)	voltage
+	200	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.id)	voltage
+	201	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.igb)	voltage
+	202	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.igd)	voltage
+	203	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.igs)	voltage
+	204	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rbdb)	voltage
+	205	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rbpb)	voltage
+	206	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rbpd)	voltage
+	207	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rbps)	voltage
+	208	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rbsb)	voltage
+	209	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rd)	voltage
+	210	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rg)	voltage
+	211	v(onoise_total.m.x1.xm1.msky130_fd_pr__pfet_01v8_lvt.rs)	voltage
+	212	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt)	voltage
+	213	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.1overf)	voltage
+	214	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.id)	voltage
+	215	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.igb)	voltage
+	216	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.igd)	voltage
+	217	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.igs)	voltage
+	218	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rbdb)	voltage
+	219	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rbpb)	voltage
+	220	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rbpd)	voltage
+	221	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rbps)	voltage
+	222	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rbsb)	voltage
+	223	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rd)	voltage
+	224	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rg)	voltage
+	225	v(onoise_total.m.x1.xm2.msky130_fd_pr__pfet_01v8_lvt.rs)	voltage
+	226	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8)	voltage
+	227	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.1overf)	voltage
+	228	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.id)	voltage
+	229	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.igb)	voltage
+	230	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.igd)	voltage
+	231	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.igs)	voltage
+	232	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rbdb)	voltage
+	233	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rbpb)	voltage
+	234	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rbpd)	voltage
+	235	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rbps)	voltage
+	236	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rbsb)	voltage
+	237	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rd)	voltage
+	238	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rg)	voltage
+	239	v(onoise_total.m.x1.xm3.msky130_fd_pr__nfet_01v8.rs)	voltage
+	240	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8)	voltage
+	241	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.1overf)	voltage
+	242	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.id)	voltage
+	243	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.igb)	voltage
+	244	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.igd)	voltage
+	245	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.igs)	voltage
+	246	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rbdb)	voltage
+	247	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rbpb)	voltage
+	248	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rbpd)	voltage
+	249	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rbps)	voltage
+	250	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rbsb)	voltage
+	251	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rd)	voltage
+	252	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rg)	voltage
+	253	v(onoise_total.m.x1.xm4.msky130_fd_pr__nfet_01v8.rs)	voltage
+	254	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8)	voltage
+	255	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.1overf)	voltage
+	256	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.id)	voltage
+	257	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.igb)	voltage
+	258	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.igd)	voltage
+	259	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.igs)	voltage
+	260	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rbdb)	voltage
+	261	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rbpb)	voltage
+	262	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rbpd)	voltage
+	263	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rbps)	voltage
+	264	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rbsb)	voltage
+	265	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rd)	voltage
+	266	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rg)	voltage
+	267	v(onoise_total.m.x1.xm5.msky130_fd_pr__pfet_01v8.rs)	voltage
+	268	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8)	voltage
+	269	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.1overf)	voltage
+	270	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.id)	voltage
+	271	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.igb)	voltage
+	272	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.igd)	voltage
+	273	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.igs)	voltage
+	274	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rbdb)	voltage
+	275	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rbpb)	voltage
+	276	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rbpd)	voltage
+	277	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rbps)	voltage
+	278	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rbsb)	voltage
+	279	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rd)	voltage
+	280	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rg)	voltage
+	281	v(onoise_total.m.x1.xm6.msky130_fd_pr__nfet_01v8.rs)	voltage
+	282	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8)	voltage
+	283	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.1overf)	voltage
+	284	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.id)	voltage
+	285	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.igb)	voltage
+	286	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.igd)	voltage
+	287	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.igs)	voltage
+	288	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rbdb)	voltage
+	289	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rbpb)	voltage
+	290	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rbpd)	voltage
+	291	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rbps)	voltage
+	292	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rbsb)	voltage
+	293	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rd)	voltage
+	294	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rg)	voltage
+	295	v(onoise_total.m.x1.xm7.msky130_fd_pr__pfet_01v8.rs)	voltage
+	296	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8)	voltage
+	297	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.1overf)	voltage
+	298	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.id)	voltage
+	299	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.igb)	voltage
+	300	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.igd)	voltage
+	301	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.igs)	voltage
+	302	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rbdb)	voltage
+	303	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rbpb)	voltage
+	304	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rbpd)	voltage
+	305	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rbps)	voltage
+	306	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rbsb)	voltage
+	307	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rd)	voltage
+	308	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rg)	voltage
+	309	v(onoise_total.m.x1.xm8.msky130_fd_pr__pfet_01v8.rs)	voltage
+	310	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8)	voltage
+	311	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.1overf)	voltage
+	312	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.id)	voltage
+	313	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.igb)	voltage
+	314	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.igd)	voltage
+	315	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.igs)	voltage
+	316	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rbdb)	voltage
+	317	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rbpb)	voltage
+	318	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rbpd)	voltage
+	319	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rbps)	voltage
+	320	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rbsb)	voltage
+	321	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rg)	voltage
+	322	v(onoise_total.m.x1.xm9.msky130_fd_pr__nfet_01v8.rs)	voltage
+	323	v(onoise_total_r1)	voltage
+	324	v(onoise_total_r1_1overf)	voltage
+	325	v(onoise_total_r1_thermal)	voltage
+	326	v(onoise_total_r3)	voltage
+	327	v(onoise_total_r3_1overf)	voltage
+	328	v(onoise_total_r3_thermal)	voltage
 Values:
- 0	1.241974736616917e-09
-	1.802824259739978e-04
-	4.114568296686516e-03
-	3.912601039886715e-04
-	4.230519175644174e-01
-	1.569732648387963e-01
-	4.590304830496403e-01
-	3.471823012683569e-01
-	1.530008855464695e-04
-	4.096019171544325e-03
-	3.885006855913840e-04
-	5.798328567456856e-01
-	1.524462267759362e-01
-	4.520979914150263e-01
-	3.471823007536811e-01
-	1.551202516574276e-05
-	2.936405740534199e-03
-	3.912592381186093e-04
-	7.490444650896270e-01
-	2.396363448610146e-01
-	7.490451742500694e-01
-	4.537846218029597e-01
-	2.040515246075707e-05
-	2.914861516001193e-03
-	3.884998222584199e-04
-	5.922635385786789e-01
-	2.396363495401386e-01
-	7.490451792515107e-01
-	4.537846203498331e-01
-	2.312539171863242e-04
-	9.915410892889677e-03
-	7.797524389256005e-04
-	4.479014858027404e-01
-	1.058696192316571e-01
-	8.103504082839627e-01
-	8.107373675087542e-01
-	2.079157007048997e-04
-	1.261630421632967e-02
-	7.762410410039674e-04
-	7.130668638574891e-01
-	7.983055748379944e-02
-	5.922646253080331e-01
-	5.305940292820943e-01
-	1.661133476712759e-04
-	9.724198152233174e-03
-	7.762395888940727e-04
-	9.069321177836512e-01
-	1.063562574573938e-01
-	8.103503881951041e-01
-	8.095842499831145e-01
-	2.131772104917201e-05
-	1.193961191852434e-03
-	9.499888638651540e-05
-	8.103502084551577e-01
-	1.062536121610943e-01
-	8.103503921218244e-01
-	8.098268706912966e-01
-	0.000000000000000e+00
-	0.000000000000000e+00
-	0.000000000000000e+00
-	0.000000000000000e+00
-	0.000000000000000e+00
-	0.000000000000000e+00
-	0.000000000000000e+00
-	2.564608866948163e-01
-	6.261909268275057e-03
-	6.102415988133952e-05
-	5.775012877511145e-03
-	0.000000000000000e+00
-	0.000000000000000e+00
-	0.000000000000000e+00
-	1.766807299682132e-03
-	1.257891442981336e-03
-	5.999918379832821e-04
-	6.306539469349688e-04
-	6.283729114188514e-04
-	2.332279516432654e-05
-	0.000000000000000e+00
-	9.515292647451313e-08
-	2.923475072432322e-02
-	2.742334267777337e-04
-	2.737893112913476e-02
-	0.000000000000000e+00
-	0.000000000000000e+00
-	0.000000000000000e+00
-	7.847134911605583e-03
-	4.692978492460675e-03
-	3.215895532027913e-03
-	2.353392293204405e-03
-	2.344190198762288e-03
-	1.110645217404790e-04
-	0.000000000000000e+00
-	5.837969432498984e-07
-	8.697945462219185e-03
-	1.674480864756086e-04
-	7.508480993221323e-03
-	0.000000000000000e+00
-	0.000000000000000e+00
-	0.000000000000000e+00
-	2.218672476150000e-03
-	3.015445632403878e-03
-	8.129979078031654e-04
-	1.520605816878581e-03
-	1.503379200178104e-03
-	1.233581780400855e-05
+ 0	9.093439624501899e-09
+	1.472351764755763e-04
+	3.660791580892796e-03
+	2.407402751494757e-04
+	5.109636583307624e-01
+	8.189531885579943e-02
+	4.242294504363963e-01
+	3.991646310162930e-01
+	1.370305756825562e-04
+	3.622489469523840e-03
+	2.395630787422361e-04
+	6.286760767226741e-01
+	7.959962783874075e-02
+	4.193201293873695e-01
+	3.991646306470875e-01
+	9.447971200222662e-06
+	1.905414577427622e-03
+	2.407402786694825e-04
+	7.883540623237490e-01
+	2.118718856446591e-01
+	7.883552259017701e-01
+	5.505907135911896e-01
+	1.066278007656408e-05
+	1.897340720689598e-03
+	2.395630819831931e-04
+	6.706416561053291e-01
+	2.118718908521797e-01
+	7.883552315915541e-01
+	5.505907121609797e-01
+	1.522523031076199e-04
+	7.972675624189103e-03
+	4.803033572399112e-04
+	6.806794183951315e-01
+	7.993092888863780e-02
+	9.794258748673044e-01
+	9.746095099348512e-01
+	3.139170359448926e-04
+	1.921256596204485e-02
+	8.696121993436891e-04
+	8.750894048799235e-01
+	6.144605899506114e-02
+	6.706433350445780e-01
+	6.362688249242342e-01
+	2.355432207091195e-04
+	1.413963499959201e-02
+	8.696121892056890e-04
+	1.104908901133038e+00
+	8.074981361896551e-02
+	9.794258504283235e-01
+	9.727919285469344e-01
+	2.957029305144265e-05
+	1.717535540215245e-03
+	1.049999965091098e-04
+	9.794256545846092e-01
+	8.050640615754127e-02
+	9.794258575846091e-01
+	9.733295527161679e-01
+	5.715523166157734e-03
+	1.048622430072251e-12
+	6.725324318054599e-13
+	-1.176676533987120e-10
+	2.984800915991239e-01
+	1.309356028118238e+00
+	7.568124667872321e-01
+	1.243606796938066e-01
+	2.102745109942524e-03
+	2.657406600596308e-05
+	1.916553107302789e-03
+	0.000000000000000e+00
+	0.000000000000000e+00
+	0.000000000000000e+00
+	5.397676820826819e-04
+	4.554941459714423e-04
+	3.805648138655801e-04
+	2.284021789335748e-04
+	2.275263977779732e-04
+	8.095706829066070e-06
+	0.000000000000000e+00
+	2.463615839874264e-08
+	1.178552889662737e-02
+	1.159135315687464e-04
+	1.080004794379113e-02
+	0.000000000000000e+00
+	0.000000000000000e+00
+	0.000000000000000e+00
+	3.704234462055822e-03
+	1.584638322108224e-03
+	2.179363337833126e-03
+	7.954153484723756e-04
+	7.912859827344866e-04
+	5.783264865494968e-05
+	0.000000000000000e+00
+	1.409813038493392e-07
+	2.815496443355712e-03
+	1.087480556295902e-04
+	2.706397337412399e-03
+	0.000000000000000e+00
+	0.000000000000000e+00
+	0.000000000000000e+00
+	3.543324191567353e-04
+	5.365058013688155e-04
+	1.823098018716571e-04
+	2.684082844606377e-04
+	2.682009835838474e-04
+	2.411054152240709e-06
 	0.000000000000000e+00
-	9.042971995137898e-07
-	4.223717825537219e-02
-	8.469402913648899e-04
-	3.898506026004116e-02
+	3.808170286666092e-07
+	1.511599319015029e-02
+	5.551780633518546e-04
+	1.483369204693644e-02
 	0.000000000000000e+00
 	0.000000000000000e+00
 	0.000000000000000e+00
-	9.351696279788817e-03
-	1.073965455092335e-02
-	1.620588343516430e-03
-	5.415191392676035e-03
-	5.354664903667224e-03
-	9.770743981024121e-05
+	1.485510645669269e-03
+	1.952322900925409e-03
+	4.704157360793620e-04
+	9.767253093753636e-04
+	9.759772583375754e-04
+	2.202132097276663e-05
 	0.000000000000000e+00
-	2.254885766994711e-06
-	5.450871628432876e-03
-	2.762653908015587e-05
-	3.352680253981384e-03
+	1.126644479712665e-06
+	2.795420255206442e-03
+	2.192867515413587e-05
+	2.100675959201334e-03
 	0.000000000000000e+00
 	0.000000000000000e+00
 	0.000000000000000e+00
-	1.735028971107797e-03
-	3.005816110735842e-03
-	1.379013931040837e-03
-	1.505984346862660e-03
-	1.501870098737405e-03
-	1.532431038847451e-05
+	8.408854204042604e-04
+	1.288322528549616e-03
+	4.511060529007778e-04
+	6.450988483563459e-04
+	6.438475182367795e-04
+	1.365697581260140e-06
 	0.000000000000000e+00
-	6.880721388793788e-07
-	2.029485168286898e-01
-	1.053636188250654e-02
-	1.998313267605097e-01
+	3.688592036338000e-07
+	1.001501162344834e-01
+	8.189573317232291e-03
+	9.935843231189007e-02
 	0.000000000000000e+00
 	0.000000000000000e+00
 	0.000000000000000e+00
-	2.573987574487593e-02
-	1.558816258711289e-02
-	1.081532090898488e-02
-	7.807639758808047e-03
-	7.789611508528818e-03
-	6.212344412928588e-04
+	6.642618163387025e-03
+	5.021149250132028e-03
+	2.983332703011150e-03
+	2.513836858668042e-03
+	2.509518798475844e-03
+	1.579199747539426e-04
 	0.000000000000000e+00
-	2.350279323545005e-06
-	1.342161790522129e-01
-	7.239496200419340e-04
-	1.276137483727924e-01
+	3.200301647181730e-06
+	6.051047604354969e-02
+	3.872110575530522e-04
+	5.860361586942403e-02
 	0.000000000000000e+00
 	0.000000000000000e+00
 	0.000000000000000e+00
-	3.129608942533030e-02
-	2.030122006163690e-02
-	1.139969847990444e-02
-	1.017248370426042e-02
-	1.014334368038051e-02
-	5.339652794076037e-04
+	1.117885333976205e-02
+	7.589596859388290e-03
+	3.943304532149984e-03
+	3.800645912450928e-03
+	3.792860358608487e-03
+	1.867961158871416e-04
 	0.000000000000000e+00
-	1.782012968200813e-06
-	7.817370870552879e-03
-	4.511633130940538e-05
-	7.176713716881949e-03
+	8.300828519800657e-07
+	5.126175864085346e-03
+	3.910371299944527e-05
+	4.873149459085792e-03
 	0.000000000000000e+00
 	0.000000000000000e+00
 	0.000000000000000e+00
-	2.068738594140316e-03
-	1.875646358955507e-03
-	2.103410211240028e-04
-	9.397663916870372e-04
-	9.371770658996506e-04
-	2.446111213816634e-05
+	1.052603947246178e-03
+	9.693290414564743e-04
+	1.028436189401186e-04
+	4.853754553870087e-04
+	4.844295165248887e-04
+	1.233959040707934e-05
 	0.000000000000000e+00
-	1.435979407901610e-07
-	5.777771089756138e-02
+	1.165448353200227e-07
+	3.602387738994670e-02
+	2.625755932138021e-12
+	3.600597439561325e-02
 	0.000000000000000e+00
-	5.777771089756138e-02
-	3.376327577233111e-04
 	0.000000000000000e+00
-	3.376327577233111e-04
-	1.968213405184501e-02
 	0.000000000000000e+00
-	1.968213405184501e-02
-	2.458370122518911e-04
-	8.286010354386271e-05
-	2.350103622153303e-05
-	7.943098334153404e-05
+	7.106563342595492e-04
+	5.562760200343934e-04
+	1.756114132258634e-04
+	1.946610988729255e-04
+	3.978879403962933e-04
+	1.579392410617238e-05
 	0.000000000000000e+00
+	4.977730601864997e-04
+	2.800799538028565e-04
 	0.000000000000000e+00
+	2.800799538028565e-04
+	7.898380974034809e-03
 	0.000000000000000e+00
-	7.371614662527511e-07
-	1.447739893609609e-06
-	7.277186905808096e-07
-	7.238703027569941e-07
-	7.238698047691922e-07
-	5.737135013727604e-09
+	7.898380974034809e-03
+	2.187782450086529e-04
+	7.311658993624193e-05
+	1.945177593819196e-05
+	7.044705979834444e-05
 	0.000000000000000e+00
-	5.168282427312066e-10
-	8.153613878886252e-05
-	2.452435118874168e-05
-	7.773774853524151e-05
 	0.000000000000000e+00
 	0.000000000000000e+00
+	7.908449787506498e-07
+	1.556257807597349e-06
+	7.858354725041082e-07
+	7.781293465908249e-07
+	7.781287533516629e-07
+	4.606560974684172e-09
 	0.000000000000000e+00
-	6.792668092142796e-07
-	1.324734827965608e-06
-	6.684051647804950e-07
-	6.623697398676826e-07
-	6.623666155607629e-07
-	5.035121355960050e-09
+	3.636013475680569e-10
+	7.119965588075142e-05
+	1.979569615860027e-05
+	6.836295557700504e-05
 	0.000000000000000e+00
-	5.044531063227442e-10
-	1.219397466265107e-04
-	5.985545326476122e-05
-	1.061902729565387e-04
 	0.000000000000000e+00
 	0.000000000000000e+00
+	7.272386873546386e-07
+	1.410172571408911e-06
+	7.182871156788070e-07
+	7.050879517232600e-07
+	7.050857269177072e-07
+	4.659330873837108e-09
 	0.000000000000000e+00
-	1.138617993175033e-06
-	2.263475605317337e-06
-	1.127391542503979e-06
-	1.131740053480982e-06
-	1.131736740529435e-06
+	3.589553230150998e-10
+	1.079916196724046e-04
+	6.907011699489588e-05
+	8.299007283129006e-05
 	0.000000000000000e+00
-	1.281413378557557e-09
-	1.321600308044472e-04
-	6.312026680256952e-05
-	1.160585734850781e-04
 	0.000000000000000e+00
 	0.000000000000000e+00
+	7.218573887618519e-07
+	1.441568365599515e-06
+	7.200052231191039e-07
+	7.207841916294502e-07
+	7.207841947455692e-07
+	9.468169020379485e-10
 	0.000000000000000e+00
-	1.267650751821603e-06
-	2.498581216448076e-06
-	1.241707097977798e-06
-	1.249309921126569e-06
-	1.249283769802196e-06
-	3.383005216987488e-09
+	1.916077704356520e-09
+	1.176608462104725e-04
+	7.410323635306035e-05
+	9.136575075655935e-05
 	0.000000000000000e+00
-	1.382540354293328e-09
-	1.918339701865807e-05
-	1.644527447040240e-06
-	1.909868906142883e-05
 	0.000000000000000e+00
 	0.000000000000000e+00
+	7.997553546210452e-07
+	1.594150444454596e-06
+	7.956703150128095e-07
+	7.970755338949378e-07
+	7.970751128935510e-07
+	1.903366463276758e-09
 	0.000000000000000e+00
-	2.857667365765016e-07
-	5.125565976248494e-07
-	2.501758364694811e-07
-	2.562802022213830e-07
-	2.562776654782614e-07
-	2.034944064467695e-09
+	2.091676717955583e-09
+	1.422251165991434e-05
+	1.749459823311357e-06
+	1.410458202962166e-05
 	0.000000000000000e+00
-	1.368344532760150e-10
-	2.541701833635536e-05
-	9.266613514279485e-06
-	2.365667628391439e-05
 	0.000000000000000e+00
 	0.000000000000000e+00
+	2.000960120241539e-07
+	3.719012836063604e-07
+	1.802452567222279e-07
+	1.859518407727111e-07
+	1.859502830127835e-07
+	1.031065728853769e-09
 	0.000000000000000e+00
-	3.721670983136235e-07
-	4.581736815216112e-07
-	2.507829987802152e-07
-	2.291249227938816e-07
-	2.290743440914126e-07
-	8.080140732813231e-09
+	1.530017228859323e-10
+	2.185610058036429e-05
+	1.060848893342990e-05
+	1.909354811329962e-05
 	0.000000000000000e+00
-	3.572891256840460e-10
-	1.516148065919230e-05
-	1.058466189475261e-06
-	1.510733519302319e-05
 	0.000000000000000e+00
 	0.000000000000000e+00
+	3.002602237077433e-07
+	5.305922504366286e-07
+	2.702632920688682e-07
+	2.653074264173912e-07
+	2.652924590952297e-07
+	4.502654319729333e-09
 	0.000000000000000e+00
-	4.157689688259874e-07
-	4.393498134393031e-07
-	2.368437203528525e-07
-	2.197571441118967e-07
-	2.196476368563815e-07
-	6.566857097364705e-09
+	7.713249313012914e-10
+	1.130535326092626e-05
+	8.172460223966322e-07
+	1.126178072388532e-05
 	0.000000000000000e+00
-	1.348599410614280e-10
-	1.227432945766003e-05
-	2.189644779999478e-06
-	1.207008319120175e-05
 	0.000000000000000e+00
 	0.000000000000000e+00
+	3.003961909578484e-07
+	3.559184413852467e-07
+	1.874357625773713e-07
+	1.779963333997549e-07
+	1.779469370182374e-07
+	4.518899589381593e-09
 	0.000000000000000e+00
-	1.620170410327010e-07
-	2.952549188602528e-07
-	1.438654168853817e-07
-	1.476286122624154e-07
-	1.476270879119535e-07
-	9.531073763970295e-10
+	1.386863068921347e-10
+	1.236632063438304e-05
+	2.111987873942954e-06
+	1.217698635847113e-05
 	0.000000000000000e+00
-	1.026696488151543e-10
-	2.826209384209064e-05
 	0.000000000000000e+00
-	2.826209384209064e-05
-	1.061236161119224e-04
 	0.000000000000000e+00
-	1.061236161119224e-04
-	3.362732978932457e-05
+	1.637847457359727e-07
+	3.029096098534717e-07
+	1.481169280068829e-07
+	1.514556059136529e-07
+	1.514545767737928e-07
+	9.311746233975278e-10
 	0.000000000000000e+00
-	3.362732978932457e-05
+	1.509298009481996e-10
+	2.003479641731347e-05
+	8.897173870756572e-15
+	2.003313894782462e-05
+	0.000000000000000e+00
+	0.000000000000000e+00
+	0.000000000000000e+00
+	1.960394716095917e-08
+	1.728114575124385e-08
+	6.275575193967759e-09
+	6.459108151909927e-09
+	1.645111387357025e-08
+	0.000000000000000e+00
+	2.555268966118834e-07
+	9.808614953396004e-05
+	0.000000000000000e+00
+	9.808614953396004e-05
+	3.097155873421687e-05
+	0.000000000000000e+00
+	3.097155873421687e-05
 
