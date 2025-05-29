@@ -1,5 +1,4 @@
-v {xschem version=3.4.6RC file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -80,7 +79,7 @@ ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=12
+nf=1 mult=27
 model=pfet_01v8
 spiceprefix=X
 }
@@ -91,7 +90,7 @@ ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=33
+nf=1 mult=24
 model=pfet_01v8
 spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8.sym} 1070 -440 0 1 {name=M8
@@ -167,10 +166,10 @@ C {ngspice_get_value.sym} 1090 -440 0 0 {name=r22 node=@M.X1.XM8.msky130_fd_pr__
 descr="gm= "}
 C {ngspice_probe.sym} 1750 -190 0 0 {name=r25}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 1270 -270 0 0 {name=M1
-L=0.55
-W=50
+L=0.6
+W=60
 nf=1
-mult=1
+mult=10
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -181,10 +180,10 @@ model=pfet_01v8_lvt
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 1590 -270 0 1 {name=M2
-L=0.55
-W=50
+L=0.6
+W=60
 nf=1
-mult=1
+mult=10
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -196,14 +195,14 @@ spiceprefix=X
 }
 C {capa.sym} 1830 -190 3 0 {name=C1
 m=1
-value=1.87p
+value=7.9p
 footprint=1206
 device="ceramic capacitor"}
 C {ammeter.sym} 1020 10 0 0 {name=Vmeas savecurrent=true spice_ignore=0}
 C {ngspice_get_value.sym} 1530 -410 0 0 {name=r1 node=@M.X1.XM5.msky130_fd_pr__pfet_01v8[vth]
 descr="vth= "}
 C {res.sym} 1720 -190 1 0 {name=R7
-value=1.35k
+value=350
 footprint=787.45
 device=resistor
 m=1}
@@ -222,21 +221,21 @@ C {lab_pin.sym} 1460 -300 2 0 {name=l7 sig_type=std_logic lab=vss
 C {opin.sym} 1570 -220 0 0 {name=p7 lab=v1}
 C {sky130_fd_pr/nfet_01v8.sym} 1550 -65 0 0 {name=M4
 L=2.2
-W=30
+W=80
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=1
+nf=1 mult=2
 model=nfet_01v8
 spiceprefix=X}
 C {sky130_fd_pr/nfet_01v8.sym} 1310 -65 0 1 {name=M3
 L=2.2
-W=30
+W=80
 ad="'W * 0.29'" pd="'2 * (W + 0.29)'"
 as="'W * 0.29'" ps="'2 * (W + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-nf=1 mult=1
+nf=1 mult=2
 model=nfet_01v8
 spiceprefix=X}

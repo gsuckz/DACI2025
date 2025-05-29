@@ -1,5 +1,4 @@
-v {xschem version=3.4.6RC file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -86,17 +85,17 @@ value="
 
 
 * Circuit Parameters
-.param iref = 95u
-.param vdd  = 1.63
+.param iref = 100u
+.param vdd  = 1.8
 .param vss  = 0.0
-.param vcm  = 0.72
+.param vcm  = 0.8
 .param vac  = 60m
 .param fin  = 9.765625e5
-.options TEMP = 125.0
+.options TEMP = 65.0
 
 * Include Models
 *.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
-.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ss
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
 *.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 * OP Parameters & Singals to save
 .save all

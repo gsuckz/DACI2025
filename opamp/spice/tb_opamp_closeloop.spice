@@ -18,12 +18,12 @@ x1 vdd net1 vin vcm vout vss v1 opamp
 
 * Circuit Parameters
 .param iref = 95u
-.param vdd  = 1.63
+.param vdd  = 1.62
 .param vss  = 0.0
 .param vcm  = 0.72
 .param vac  = 60m
 .param fin  = 9.765625e5
-.options TEMP = 125
+.options TEMP = 125.0
 
 * FFT Parameters
 .param Ts_FFT     = 1e-9
@@ -39,7 +39,7 @@ x1 vdd net1 vin vcm vout vss v1 opamp
 *.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
 *.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 *.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
-.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ff
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ss
 *.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 * OP Parameters & Singals to save
 .save all
@@ -144,25 +144,25 @@ x1 vdd net1 vin vcm vout vss v1 opamp
 *.opin vout
 *.opin v1
 XM5 vp iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=50 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
-+ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=12 m=12
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=27 m=27
 XM7 vout iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=50 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
-+ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=33 m=33
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=24 m=24
 XM8 iref iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=50 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
 + nrs='0.29 / W' sa=0 sb=0 sd=0 mult=3 m=3
-XM1 vbn vin_n vp vp sky130_fd_pr__pfet_01v8_lvt L=0.55 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM2 v1 vin_p vp vp sky130_fd_pr__pfet_01v8_lvt L=0.55 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-C1 net2 vout 1.87p m=1
+XM1 vbn vin_n vp vp sky130_fd_pr__pfet_01v8_lvt L=0.6 W=60 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
+XM2 v1 vin_p vp vp sky130_fd_pr__pfet_01v8_lvt L=0.6 W=60 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
+C1 net2 vout 7.9p m=1
 Vmeas net1 vss 0
 .save i(vmeas)
-R7 net2 v1 1.2k m=1
-XM6 vout v1 net1 net1 sky130_fd_pr__nfet_01v8 L=0.4 W=35 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
-+ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
-XM4 v1 vbn net1 net1 sky130_fd_pr__nfet_01v8 L=2.2 W=30 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
-+ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM3 vbn vbn net1 net1 sky130_fd_pr__nfet_01v8 L=2.2 W=30 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
-+ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+R7 net2 v1 350 m=1
+XM6 vout v1 net1 net1 sky130_fd_pr__nfet_01v8 L=0.3 W=35 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=20 m=20
+XM4 v1 vbn net1 net1 sky130_fd_pr__nfet_01v8 L=2.2 W=80 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
+XM3 vbn vbn net1 net1 sky130_fd_pr__nfet_01v8 L=2.2 W=80 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
++ nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
 .ends
 
 .GLOBAL GND

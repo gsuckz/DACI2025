@@ -77,12 +77,12 @@ value="
 
 * Circuit Parameters
 .param iref = 95u
-.param vdd  = 1.63
+.param vdd  = 1.62
 .param vss  = 0.0
 .param vcm  = 0.72
 .param vac  = 60m
 .param fin  = 9.765625e5
-.options TEMP = 125
+.options TEMP = 125.0
 
 * FFT Parameters
 .param Ts_FFT     = 1e-9
@@ -98,7 +98,7 @@ value="
 *.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
 *.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 *.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
-.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ff
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ss
 *.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 * OP Parameters & Singals to save
 .save all
