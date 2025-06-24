@@ -1,0 +1,83 @@
+** sch_path: /foss/designs/DACI2025/tp2/tp2_4.sch
+**.subckt tp2_4
+XM1 vn vn vss vss sky130_fd_pr__nfet_01v8 L=0.15 W={wx} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+IREF vdd vn DC{iref}
+VSS vss GND DC{vss}
+VDD vdd vss DC{vdd}
+XM2 vp vn vss vss sky130_fd_pr__nfet_01v8 L=0.15 W={wx} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM3 vp vp vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W={wp} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=5 m=5
+XM4 net1 vp vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W={wp} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=5 m=5
+R1 net1 vss 4.5k m=1
+XM5 net2 vn vss vss sky130_fd_pr__nfet_01v8 L=0.15 W={wx} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
+R2 vdd net2 450 m=1
+XM6 net3 vp vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W={wp} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=500 m=500
+R5 net3 vss 45 m=1
+**** begin user architecture code
+
+
+
+* Parameters
+.param vdd = 1.98
+.param vss = 0.0
+.param iref = 200u
+.param wp = 97
+.param wx = 2.71
+.options TEMPS = 27.0
+
+* Models
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ff
+* Data to save
+.save all
++ @M.XM1.msky130_fd_pr__nfet_01v8[id]
++ @M.XM1.msky130_fd_pr__nfet_01v8[gm]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vds]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vgs]
++ @M.XM1.msky130_fd_pr__nfet_01v8[w]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM2.msky130_fd_pr__nfet_01v8[id]
++ @M.XM2.msky130_fd_pr__nfet_01v8[gm]
++ @M.XM2.msky130_fd_pr__nfet_01v8[vds]
++ @M.XM2.msky130_fd_pr__nfet_01v8[vgs]
++ @M.XM2.msky130_fd_pr__nfet_01v8[w]
++ @M.XM2.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM2.msky130_fd_pr__nfet_01v8[vdsat]
++ @M.XM4.msky130_fd_pr__nfet_01v8[vdsat]
++ @M.XM7.msky130_fd_pr__nfet_01v8[vdsat]
++ @M.XM6.msky130_fd_pr__nfet_01v8[vdsat]
++ @M.XM5.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM4.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM3.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM7.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM6.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM1.msky130_fd_pr__nfet_01v8[id]
++ @M.XM2.msky130_fd_pr__nfet_01v8[id]
++ @M.XM3.msky130_fd_pr__pfet_01v8[id]
++ @M.XM4.msky130_fd_pr__pfet_01v8[id]
++ @M.XM5.msky130_fd_pr__nfet_01v8[id]
++ @M.XM6.msky130_fd_pr__pfet_01v8[id]
+
+* Simulation
+.control
+
+  op
+  save all
+  unset filetype
+  write tp2_4.raw
+
+.endc
+
+.end
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

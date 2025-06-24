@@ -1,0 +1,73 @@
+** sch_path: /foss/designs/DACI2025/tp2/tp2_5.sch
+**.subckt tp2_5
+Iref vdd vbn {iref}
+VSS vss GND {vss}
+VDD vdd vss {vdd}
+V1 vin vss SIN(0 {Vin} 50Meg) DC 0 AC 1
+XM1 vout vbn vss vss sky130_fd_pr__nfet_01v8 L=0.3 W={wn} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM0 vbn vbn vss vss sky130_fd_pr__nfet_01v8 L=0.3 W={wn} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+C1 vin vbn 1 m=1
+R1 vdd vout {R} m=1
+**** begin user architecture code
+
+
+
+* Parameters
+.param vdd = 1.8
+.param vss = 0.0
+.param iref = 200u
+.param wn = 6.46
+.param R = 4.5k
+.param Vin = 150m
+
+.options TEMP = 65.0
+
+* Models
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+* Data to save
+.save all
++ @M.XM0.msky130_fd_pr__nfet_01v8[id]
++ @M.XM0.msky130_fd_pr__nfet_01v8[vds]
++ @M.XM0.msky130_fd_pr__nfet_01v8[vgs]
++ @M.XM0.msky130_fd_pr__nfet_01v8[vdsat]
++ @M.XM0.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM0.msky130_fd_pr__nfet_01v8[gm]
++ @M.XM1.msky130_fd_pr__nfet_01v8[id]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vds]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vgs]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vdsat]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM1.msky130_fd_pr__nfet_01v8[gm]
++ @M.XM1.msky130_fd_pr__nfet_01v8[gds]
+
+* Simulation
+.control
+  ac dec 100 10k 100G
+  setplot ac1
+  plot vdb(vout) {vp(vout)*180/PI}
+  meas ac DCG find v(vout) at=50meg
+  write tp2_5_ac.raw
+
+  reset
+  tran 0.01n 100n
+  plot v(vbn) v(vout) v(vin)
+  write tp2_5_tran.raw
+
+  reset
+  op
+  save all
+  print all
+  unset filetype
+  write tp2_5.raw
+.endc
+
+.end
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

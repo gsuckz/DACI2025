@@ -33,6 +33,11 @@ N 2360 -1160 2360 -1080 { lab=vin}
 N 2360 -1020 2360 -920 { lab=vbn}
 N 2360 -890 2490 -890 { lab=vbn}
 N 2400 -1240 2530 -1240 { lab=vdd}
+N 2530 -1110 2550 -1110 {lab=vdd}
+N 2550 -1160 2550 -1110 {lab=vdd}
+N 2490 -1110 2490 -1070 {lab=vout}
+N 2490 -1070 2530 -1070 {lab=vout}
+N 2530 -1160 2550 -1160 {lab=vdd}
 C {isource.sym} 2120 -1160 0 0 {name=Iref value=\{iref\}}
 C {vsource.sym} 2730 -1000 0 0 {name=VSS value=\{vss\}}
 C {gnd.sym} 2730 -900 0 0 {name=l1 lab=GND}
@@ -56,7 +61,7 @@ value="
 .param iref = 200u
 .param wn = 6.46
 .param R = 4.5k
-.param Vin = 150m 
+.param Vin = 40m 
 
 .options TEMP = 65.0
 
@@ -78,6 +83,15 @@ value="
 + @M.XM1.msky130_fd_pr__nfet_01v8[vth]
 + @M.XM1.msky130_fd_pr__nfet_01v8[gm]
 + @M.XM1.msky130_fd_pr__nfet_01v8[gds]
++ @M.XM2.msky130_fd_pr__pfet_01v8_lvt[id]
++ @M.XM2.msky130_fd_pr__pfet_01v8_lvt[vds]
++ @M.XM2.msky130_fd_pr__pfet_01v8_lvt[vgs]
++ @M.XM2.msky130_fd_pr__pfet_01v8_lvt[vdsat]
++ @M.XM2.msky130_fd_pr__pfet_01v8_lvt[vth]
++ @M.XM2.msky130_fd_pr__pfet_01v8_lvt[gm]
++ @M.XM2.msky130_fd_pr__pfet_01v8_lvt[gds]
+
+
 
 * Simulation
 .control
@@ -97,7 +111,7 @@ value="
   save all
   print all
   unset filetype
-  write tp2_5.raw
+  write tp2_5_b.raw
 .endc
 
 .end
@@ -140,11 +154,6 @@ value=1
 footprint=1206
 device="ceramic capacitor"}
 C {lab_wire.sym} 2530 -1010 3 0 {name=l11 sig_type=std_logic lab=vout}
-C {res.sym} 2530 -1110 0 0 {name=R1
-value=\{R\}
-footprint=1206
-device=resistor
-m=1}
 C {ngspice_probe.sym} 2530 -1030 0 0 {name=r1}
 C {ngspice_probe.sym} 2120 -1030 0 0 {name=r3}
 C {ngspice_get_value.sym} 2540 -940 0 0 {name=r5 node=i(@M.XM1.msky130_fd_pr__nfet_01v8[id])
@@ -160,3 +169,25 @@ descr="gds="}
 C {ngspice_get_value.sym} 2620 -830 0 0 {name=r8 node=v(@M.XM1.msky130_fd_pr__nfet_01v8[vth])
 descr="Vth="}
 C {lab_wire.sym} 2310 -1160 0 0 {name=l9 sig_type=std_logic lab=vin}
+C {sky130_fd_pr/pfet_01v8_lvt.sym} 2510 -1110 0 0 {name=M2
+W=6.5
+L=0.35
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8_lvt
+spiceprefix=X
+}
+C {ngspice_get_value.sym} 2390 -1190 0 0 {name=r9 node=v(@M.XM2.msky130_fd_pr__pfet_01v8_lvt[vdsat])
+descr="Vdsat="}
+C {ngspice_get_value.sym} 2390 -1150 0 0 {name=r10 node=@M.XM2.msky130_fd_pr__pfet_01v8_lvt[gm]
+descr="gm="}
+C {ngspice_get_value.sym} 2460 -1150 0 0 {name=r11 node=@M.XM2.msky130_fd_pr__pfet_01v8_lvt[gds]
+descr="gds="}
+C {ngspice_get_value.sym} 2460 -1190 0 0 {name=r12 node=v(@M.XM2.msky130_fd_pr__pfet_01v8_lvt[vth])
+descr="Vth="}
