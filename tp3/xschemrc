@@ -31,4 +31,4 @@ set netlist_dir "$script_path/spice"
 
 
 # Esquemático inicial
-set XSCHEM_START_WINDOW {./t3_1.sch}
+set XSCHEM_START_WINDOW {./tp3_1.sch}

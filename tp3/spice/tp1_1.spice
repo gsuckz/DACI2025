@@ -1,0 +1,76 @@
+** sch_path: /foss/designs/DACI2025/tp1/tp1_1.sch
+**.subckt tp1_1
+VGS g GND DC{vgs}
+VDS d GND DC{vds}
+XM3 d g GND GND sky130_fd_pr__nfet_01v8 L=4 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 d g GND GND sky130_fd_pr__nfet_01v8 L=4 W=20 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=40 m=40
+XM1 d g GND GND sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+**** begin user architecture code
+
+
+
+* Parameters
+.param vds = 1.8
+.param vgs = 0.9
+.options TEMPS = 27.0
+
+* Models
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+.lib $PDK_ROOT/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+* Data to save
+.save all
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[id]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[gm]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vds]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vdsat]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vgs]
++ @M.XM1.msky130_fd_pr__nfet_01v8[cgg]
++ @M.XM2.msky130_fd_pr__nfet_01v8[id]
++ @M.XM2.msky130_fd_pr__nfet_01v8[gm]
++ @M.XM2.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM2.msky130_fd_pr__nfet_01v8[vds]
++ @M.XM2.msky130_fd_pr__nfet_01v8[vdsat]
++ @M.XM2.msky130_fd_pr__nfet_01v8[vgs]
++ @M.XM3.msky130_fd_pr__nfet_01v8[id]
++ @M.XM3.msky130_fd_pr__nfet_01v8[gm]
++ @M.XM3.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM3.msky130_fd_pr__nfet_01v8[vds]
++ @M.XM3.msky130_fd_pr__nfet_01v8[vdsat]
++ @M.XM3.msky130_fd_pr__nfet_01v8[vgs]
+
+
+* Simulation
+.control
+  dc VDS 0 1.8 0.01 VGS 0 1.8 0.3
+  setplot dc1
+  plot @M.XM1.msky130_fd_pr__nfet_01v8[id] @M.XM3.msky130_fd_pr__nfet_01v8[id] ylabel Id xlabel Vds title 'Id vs Vds vs Vgs'
+  set filetype = ascii
+  write tp1_1_dc1.raw
+
+  reset
+  dc VGS 0 1.8 0.01
+  setplot dc2
+  *plot @M.XM1.msky130_fd_pr__nfet_01v8[id] @M.XM2.msky130_fd_pr__nfet_01v8[id] @M.XM3.msky130_fd_pr__nfet_01v8[id] ylabel Id xlabel Vgs
+  *plot @M.XM1.msky130_fd_pr__nfet_01v8[id] @M.XM2.msky130_fd_pr__nfet_01v8[id] @M.XM3.msky130_fd_pr__nfet_01v8[id] ylog ylabel log(Id) xlabel Vgs
+  plot @M.XM1.msky130_fd_pr__nfet_01v8_lvt[gm]/@M.XM1.msky130_fd_pr__nfet_01v8_lvt[id] vs @M.XM1.msky130_fd_pr__nfet_01v8_lvt[id] xlog ylabel gm/Id xlabel Id
+  plot @M.XM1.msky130_fd_pr__nfet_01v8_lvt[gm]/@M.XM1.msky130_fd_pr__nfet_01v8_lvt[id] vs @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vgs] ylabel gm/Id xlabel Vgs
+  plot @M.XM1.msky130_fd_pr__nfet_01v8_lvtgm] vs @M.XM1.msky130_fd_pr__nfet_01v8_lvt[id] xlog ylabel gm/Id xlabel Id
+  plot @M.XM1.msky130_fd_pr__nfet_01v8_lvt[gm] vs @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vgs] ylabel gm/Id xlabel Vgs
+  set filetype = ascii
+  write tp1_1_dc2.raw
+
+
+
+.endc
+
+.end
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

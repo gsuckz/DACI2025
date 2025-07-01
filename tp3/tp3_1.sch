@@ -1,4 +1,4 @@
-v {xschem version=2.9.9 file_version=1.2 }
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -62,27 +62,93 @@ C {vsource.sym} 3210 -1000 0 1 {name=V1 value=\{vcm\}}
 C {lab_pin.sym} 2480 -840 1 1 {name=l10 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 2180 -1260 0 0 {name=l21 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 2100 -980 0 0 {name=l23 sig_type=std_logic lab=vbn}
-C {netlist_not_shown.sym} 2770 -1270 0 0 {name=simulation only_toplevel=false 
+C {netlist_not_shown.sym} 2760 -1280 0 0 {name=simulation only_toplevel=false 
 value="
 
 * Parameters
+.param vdd = 1.8
+.param vss = 0.0
+.param iref = 100u
+.param wn = 8
+.param wdif = 3.5
+.param R = 12k
+.param Vin = 10m 
+.param vcm = 1.2
 
 .options TEMP = 65.0
 
 * Models
-.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
-
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 * Data to save
 .save all
-
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[id]
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[vds]
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[vgs]
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[vdsat]
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[vth]
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[gm]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[id]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vds]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vgs]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vdsat]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vth]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[gm]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[gds]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[id]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[vds]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[vgs]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[vdsat]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[vth]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[gm]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[gds]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[id]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[vds]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[vgs]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[vdsat]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[vth]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[gm]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[gds]
 
 * Simulation
 .control
+
+
+  ac dec 100 10k 100G
+  let vdiff = vout1-vout2
+  let vindiff = vin1-vin2
+  setplot ac1
+  meas ac GBW when vdb(vdiff) = 0
+  meas ac DCG find vdb(vdiff) at=10k
+  meas ac PM find vp(vdiff) when vdb(vdiff)=0
+  print PM*180/PI
+  meas ac GM find vdb(vdiff) when vp(vdiff)=0
+  plot vdb(vdiff) \{vp(vdiff)*180/PI\}
+  write tp3_1_ac.raw
+  
+  reset
+  tran 0.01n 100n
+  let vdiff = vout1-vout2
+  let vindiff = vin1-vin2
+  plot v(vindiff) v(vdiff)
+ plot v(vout1) v(vout2)
+ plot v(vin1) v(vin2)
+  write tp3_1_tran.raw
+reset
+ op
+  save all
+  print all
+  unset filetype
+  write tp3_1.raw
+
+  
   
 .endc
 
 .end
-"}
+"
+}
 C {launcher.sym} 2540 -1320 0 0 {name=h1
 descr=Backannotate
 tclcommand="ngspice::annotate"}
@@ -90,7 +156,7 @@ C {sky130_fd_pr/nfet_01v8_lvt.sym} 2460 -910 0 0 {name=M1
 L=0.75
 W=\{wn\}
 nf=1 
-mult=1
+mult=20
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -104,7 +170,7 @@ C {sky130_fd_pr/nfet_01v8_lvt.sym} 2040 -910 0 1 {name=M0
 L=0.75
 W=\{wn\}
 nf=1 
-mult=1
+mult=20
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -117,7 +183,7 @@ spiceprefix=X
 C {lab_pin.sym} 3210 -920 1 1 {name=l8 sig_type=std_logic lab=vss}
 C {lab_pin.sym} 2420 -1040 2 0 {name=l9 sig_type=std_logic lab=vss}
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 2360 -1040 0 0 {name=M2
-L=0.15
+L=0.3
 W=\{wdif\}
 nf=1 
 mult=1
@@ -138,7 +204,7 @@ device=resistor
 m=1}
 C {lab_pin.sym} 2540 -1040 2 1 {name=l11 sig_type=std_logic lab=vss}
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 2620 -1040 0 1 {name=M3
-L=0.15
+L=0.3
 W=\{wdif\}
 nf=1 
 mult=1
@@ -184,4 +250,6 @@ descr="vth="}
 C {ngspice_get_value.sym} 2280 -1180 0 0 {name=r13 node=@M.XM2.msky130_fd_pr__nfet_01v8_lvt[gds]
 descr="gds="}
 C {ngspice_get_value.sym} 2280 -1220 0 0 {name=r14 node=v(@M.XM2.msky130_fd_pr__nfet_01v8_lvt[vdsat])
+descr="vdsat="}
+C {ngspice_get_value.sym} 2570 -840 0 0 {name=r15 node=v(@M.XM1.msky130_fd_pr__nfet_01v8_lvt[vdsat])
 descr="vdsat="}

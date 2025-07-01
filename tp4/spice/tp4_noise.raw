@@ -1,0 +1,92 @@
+Title: ** sch_path: /foss/designs/daci2025/tp4/tp4.sch
+Date: Tue Jul  1 07:35:13  2025
+Command: ngspice-44.2, Build Tue Mar 18 10:43:20 UTC 2025
+Plotname: Integrated Noise
+Flags: real
+No. Variables: 41
+No. Points: 1
+Variables:
+	0	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rd)	voltage
+	1	@m.xm1.msky130_fd_pr__nfet_01v8[cds]	capacitance
+	2	@m.xm1.msky130_fd_pr__nfet_01v8[cgd]	capacitance
+	3	@m.xm1.msky130_fd_pr__nfet_01v8[cgg]	capacitance
+	4	@m.xm1.msky130_fd_pr__nfet_01v8[cgs]	capacitance
+	5	@m.xm1.msky130_fd_pr__nfet_01v8[gds]	admittance
+	6	@m.xm1.msky130_fd_pr__nfet_01v8[gm]	admittance
+	7	i(@m.xm1.msky130_fd_pr__nfet_01v8[id])	current
+	8	v(@m.xm1.msky130_fd_pr__nfet_01v8[vds])	voltage
+	9	v(@m.xm1.msky130_fd_pr__nfet_01v8[vdsat])	voltage
+	10	v(@m.xm1.msky130_fd_pr__nfet_01v8[vgs])	voltage
+	11	v(@m.xm1.msky130_fd_pr__nfet_01v8[vth])	voltage
+	12	v(inoise_total)	voltage
+	13	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8)	voltage
+	14	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.1overf)	voltage
+	15	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.id)	voltage
+	16	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.igb)	voltage
+	17	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.igd)	voltage
+	18	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.igs)	voltage
+	19	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rbdb)	voltage
+	20	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rbpb)	voltage
+	21	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rbpd)	voltage
+	22	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rbps)	voltage
+	23	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rbsb)	voltage
+	24	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rd)	voltage
+	25	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rg)	voltage
+	26	v(inoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rs)	voltage
+	27	v(onoise_total)	voltage
+	28	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8)	voltage
+	29	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.1overf)	voltage
+	30	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.id)	voltage
+	31	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.igb)	voltage
+	32	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.igd)	voltage
+	33	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.igs)	voltage
+	34	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rbdb)	voltage
+	35	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rbpb)	voltage
+	36	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rbpd)	voltage
+	37	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rbps)	voltage
+	38	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rbsb)	voltage
+	39	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rg)	voltage
+	40	v(onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.rs)	voltage
+Values:
+ 0	3.346072598251868e-05
+	6.634166436710060e-16
+	-6.590684755347669e-17
+	1.822559037283563e-15
+	-1.370843951210106e-15
+	1.050294478087075e-04
+	5.804826462117012e-04
+	9.999999875080746e-05
+	2.607151544274139e-01
+	1.867789282094205e-01
+	9.609219641184885e-01
+	7.201424492145025e-01
+	2.638208448063783e-03
+	2.638208448063783e-03
+	3.597206736533740e-04
+	2.578657547819821e-03
+	0.000000000000000e+00
+	0.000000000000000e+00
+	0.000000000000000e+00
+	3.285822855862976e-04
+	1.535487451601420e-04
+	1.760172928286211e-04
+	7.686972500985833e-05
+	7.676401329331052e-05
+	8.331553270732112e-05
+	0.000000000000000e+00
+	1.155070115693963e-06
+	4.098710052484111e-03
+	4.098710052484111e-03
+	1.561800649162796e-03
+	3.785530846844485e-03
+	0.000000000000000e+00
+	0.000000000000000e+00
+	0.000000000000000e+00
+	1.314238982327239e-04
+	6.583690227455830e-05
+	7.114851070379179e-05
+	3.294949723587904e-05
+	3.291591161111743e-05
+	0.000000000000000e+00
+	1.199210641562984e-06
+

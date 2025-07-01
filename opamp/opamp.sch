@@ -246,3 +246,19 @@ model=nfet_01v8
 spiceprefix=X}
 C {ngspice_get_expr.sym} 1750 -330 0 0 {name=r7 node="[format %.4g [expr 1 / [ngspice::get_node \{@M.X1.XM9.msky130_fd_pr__nfet_01v8[gds]\}] ] ]"
 descr="R="}
+C {ngspice_get_value.sym} 2000 -35 0 0 {name=r23 node=v(@M.X1.XM6.msky130_fd_pr__nfet_01v8[vdsat])
+descr="vdsat= "}
+C {ngspice_get_value.sym} 1990 -415 0 0 {name=r24 node=v(@M.X1.XM7.msky130_fd_pr__pfet_01v8[vdsat])
+descr="vdsat= "}
+C {ngspice_get_value.sym} 1490 -375 0 0 {name=r26 node=v(@M.X1.XM5.msky130_fd_pr__pfet_01v8[vdsat])
+descr="vdsat= "}
+C {ngspice_get_value.sym} 1140 -455 0 0 {name=r27 node=v(@M.X1.XM8.msky130_fd_pr__pfet_01v8[vdsat])
+descr="vdsat= "}
+C {ngspice_get_value.sym} 1510 -5 0 0 {name=r28 node=v(@M.X1.XM4.msky130_fd_pr__nfet_01v8[vdsat])
+descr="vdsat= "}
+C {ngspice_get_value.sym} 1310 -5 0 0 {name=r29 node=v(@M.X1.XM3.msky130_fd_pr__nfet_01v8[vdsat])
+descr="vdsat= "}
+C {ngspice_get_value.sym} 1500 -195 0 0 {name=r31 node=v(@M.X1.XM2.msky130_fd_pr__pfet_01v8_lvt[vdsat])
+descr="vdsat= "}
+C {ngspice_get_value.sym} 1210 -185 0 0 {name=r30 node=v(@M.X1.XM1.msky130_fd_pr__pfet_01v8_lvt[vdsat])
+descr="vdsat= "}

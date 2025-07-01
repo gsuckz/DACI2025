@@ -1,0 +1,87 @@
+** sch_path: /foss/designs/DACI2025/tp4/tp4.sch
+**.subckt tp4
+V1 vss GND DC{vss}
+V2 vdd vss DC{vdd}
+V3 vcm vss DC{vcm}
+V4 vin vcm sin(0 {vac} 1Meg) dc 0 ac 1
+XM1 vout vin net1 vss sky130_fd_pr__nfet_01v8 L=0.15 W={ww} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multiplier}
++ m={multiplier}
+I0 net1 vss DC{iref}
+C0 vout vss {load} m=1
+I1 vdd vout DC{iref}
+C1 net1 vss 1 m=1
+**** begin user architecture code
+
+
+
+* Circuit Parameters
+.param iref = 100u
+.param vdd  = 1.8
+.param vss  = 0.0
+.param vcm  = 0.9
+.param vac  = 10m
+.param multiplier = 1
+.param load = 0.001f
+.param ww = 0.45
+.options TEMP = 65.0
+
+
+* Models
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+* Data to save
+.save all
++ @M.XM1.msky130_fd_pr__nfet_01v8[id]
++ @M.XM1.msky130_fd_pr__nfet_01v8[gm]
++ @M.XM1.msky130_fd_pr__nfet_01v8[gds]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vth]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vds]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vdsat]
++ @M.XM1.msky130_fd_pr__nfet_01v8[vgs]
++ @M.XM1.msky130_fd_pr__nfet_01v8[cgs]
++ @M.XM1.msky130_fd_pr__nfet_01v8[cgd]
++ @M.XM1.msky130_fd_pr__nfet_01v8[cds]
++ @M.XM1.msky130_fd_pr__nfet_01v8[cgg]
+
+* Simulation
+.control
+
+******************************************************
+* analisis ruido w
+******************************************************
+alterparam multiplier = 5
+alterparam load = 1f
+reset
+noise v(vout) V4 dec 100 10k 1000G 1
+setplot noise1
+plot onoise_spectrum ylog xlog
+*plot inoise_spectrum onoise_spectrum ylog xlog
+
+setplot noise2
+print inoise_total
+print onoise_total
+print onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.1overf
+print onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.id
+
+set filetype=ascii
+write tp4_noise.raw
+
+******************************************************
+* op
+******************************************************
+unset filetype
+op
+save all
+write tp4.raw
+
+.endc
+.end
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

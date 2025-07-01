@@ -1,0 +1,180 @@
+** sch_path: /foss/designs/DACI2025/tp3/tp3_2.sch
+**.subckt tp3_2
+Iref vdd vbn {iref}
+VSS vss GND {vss}
+VDD vdd vss {vdd}
+V1 net1 vss {vcm}
+XM1 net2 vbn vss vss sky130_fd_pr__nfet_01v8_lvt L=0.75 W={wn} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multn3}
++ m={multn3}
+XM0 vbn vbn vss vss sky130_fd_pr__nfet_01v8_lvt L=0.75 W={wn} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multn}
++ m={multn}
+XM2 vout1 vin1 net2 vss sky130_fd_pr__nfet_01v8_lvt L=0.15 W={wn} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multdiff}
++ m={multdiff}
+XM3 vout2 vin2 net2 vss sky130_fd_pr__nfet_01v8_lvt L=0.15 W={wn} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multdiff}
++ m={multdiff}
+V2 vin1 net1 SIN(0 {Vin} 50Meg) DC 0
+V3 net1 vin2 SIN(0 {Vin} 50Meg) DC 0 AC 1
+XM4 vout1 vbp vdd vdd sky130_fd_pr__pfet_01v8_lvt L={lp} W={wp} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multp}
++ m={multp}
+XM6 vbp vbp vdd vdd sky130_fd_pr__pfet_01v8_lvt L={lp} W={wp} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multp2}
++ m={multp2}
+XM7 vbp vbn vss vss sky130_fd_pr__nfet_01v8_lvt L=0.75 W={wn} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multn2}
++ m={multn2}
+XM5 vout1 vout1 vdd vdd sky130_fd_pr__pfet_01v8_lvt L={lp} W={wp} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multp4}
++ m={multp4}
+XM9 vout2 vbp vdd vdd sky130_fd_pr__pfet_01v8_lvt L={lp} W={wp} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multp}
++ m={multp}
+XM10 vout2 vout2 vdd vdd sky130_fd_pr__pfet_01v8_lvt L={lp} W={wp} nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult={multp4}
++ m={multp4}
+**** begin user architecture code
+
+
+
+* Parameters
+.param vdd = 1.62
+.param vss = 0.0
+.param iref = 45u
+.param wn = 0.5
+.param wp = 1
+.param lp = 1
+.param multn = 10
+.param multn2 = 10
+.param multn3 = 21
+.param multp = 12
+.param multdiff = 4
+.param multp2 = 15
+.param multp4 = 7
+.param Vin = 100m
+.param vcm = 1.08
+
+.options TEMP = 125.0
+
+* Models
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ss
+* Data to save
+.save all
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[id]
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[vds]
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[vgs]
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[vdsat]
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[vth]
++ @M.XM0.msky130_fd_pr__nfet_01v8_lvt[gm]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[id]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vds]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vgs]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vdsat]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[vth]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[gm]
++ @M.XM1.msky130_fd_pr__nfet_01v8_lvt[gds]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[id]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[vds]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[vgs]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[vdsat]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[vth]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[gm]
++ @M.XM2.msky130_fd_pr__nfet_01v8_lvt[gds]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[id]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[vds]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[vgs]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[vdsat]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[vth]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[gm]
++ @M.XM3.msky130_fd_pr__nfet_01v8_lvt[gds]
++ @M.XM7.msky130_fd_pr__nfet_01v8_lvt[id]
++ @M.XM7.msky130_fd_pr__nfet_01v8_lvt[vds]
++ @M.XM7.msky130_fd_pr__nfet_01v8_lvt[vgs]
++ @M.XM7.msky130_fd_pr__nfet_01v8_lvt[vdsat]
++ @M.XM7.msky130_fd_pr__nfet_01v8_lvt[vth]
++ @M.XM7.msky130_fd_pr__nfet_01v8_lvt[gm]
++ @M.XM7.msky130_fd_pr__nfet_01v8_lvt[gds]
++ @M.XM4.msky130_fd_pr__pfet_01v8_lvt[id]
++ @M.XM4.msky130_fd_pr__pfet_01v8_lvt[vds]
++ @M.XM4.msky130_fd_pr__pfet_01v8_lvt[vgs]
++ @M.XM4.msky130_fd_pr__pfet_01v8_lvt[vdsat]
++ @M.XM4.msky130_fd_pr__pfet_01v8_lvt[vth]
++ @M.XM4.msky130_fd_pr__pfet_01v8_lvt[gm]
++ @M.XM4.msky130_fd_pr__pfet_01v8_lvt[gds]
++ @M.XM5.msky130_fd_pr__pfet_01v8_lvt[id]
++ @M.XM5.msky130_fd_pr__pfet_01v8_lvt[vds]
++ @M.XM5.msky130_fd_pr__pfet_01v8_lvt[vgs]
++ @M.XM5.msky130_fd_pr__pfet_01v8_lvt[vdsat]
++ @M.XM5.msky130_fd_pr__pfet_01v8_lvt[vth]
++ @M.XM5.msky130_fd_pr__pfet_01v8_lvt[gm]
++ @M.XM5.msky130_fd_pr__pfet_01v8_lvt[gds]
++ @M.XM6.msky130_fd_pr__pfet_01v8_lvt[id]
++ @M.XM6.msky130_fd_pr__pfet_01v8_lvt[vds]
++ @M.XM6.msky130_fd_pr__pfet_01v8_lvt[vgs]
++ @M.XM6.msky130_fd_pr__pfet_01v8_lvt[vdsat]
++ @M.XM6.msky130_fd_pr__pfet_01v8_lvt[vth]
++ @M.XM6.msky130_fd_pr__pfet_01v8_lvt[gm]
++ @M.XM6.msky130_fd_pr__pfet_01v8_lvt[gds]
++ @M.XM9.msky130_fd_pr__pfet_01v8_lvt[id]
++ @M.XM9.msky130_fd_pr__pfet_01v8_lvt[vds]
++ @M.XM9.msky130_fd_pr__pfet_01v8_lvt[vgs]
++ @M.XM9.msky130_fd_pr__pfet_01v8_lvt[vdsat]
++ @M.XM9.msky130_fd_pr__pfet_01v8_lvt[vth]
++ @M.XM9.msky130_fd_pr__pfet_01v8_lvt[gm]
++ @M.XM9.msky130_fd_pr__pfet_01v8_lvt[gds]
++ @M.XM10.msky130_fd_pr__pfet_01v8_lvt[id]
++ @M.XM10.msky130_fd_pr__pfet_01v8_lvt[vds]
++ @M.XM10.msky130_fd_pr__pfet_01v8_lvt[vgs]
++ @M.XM10.msky130_fd_pr__pfet_01v8_lvt[vdsat]
++ @M.XM10.msky130_fd_pr__pfet_01v8_lvt[vth]
++ @M.XM10.msky130_fd_pr__pfet_01v8_lvt[gm]
++ @M.XM10.msky130_fd_pr__pfet_01v8_lvt[gds]
+
+
+
+
+* Simulation
+.control
+
+  ac dec 100 10k 100G
+  let vdiff = vout1-vout2
+  let vindiff = vin1-vin2
+  setplot ac1
+  meas ac GBW when vdb(vdiff) = 0
+  meas ac DCG find vdb(vdiff) at=10k
+  meas ac PM find vp(vdiff) when vdb(vdiff)=0
+  print PM*180/PI
+  meas ac GM find vdb(vdiff) when vp(vdiff)=0
+  plot vdb(vdiff) {vp(vdiff)*180/PI}
+  write tp3_2_ac.raw
+
+  reset
+  tran 0.01n 100n
+  let vdiff = vout1-vout2
+  let vindiff = vin1-vin2
+  plot v(vindiff) v(vdiff)
+ plot v(vout1) v(vout2)
+  write tp3_2_tran.raw
+
+  reset
+  op
+  save all
+  print all
+  unset filetype
+  write tp3_2.raw
+
+
+.endc
+
+.end
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

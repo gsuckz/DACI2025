@@ -1,4 +1,4 @@
-v {xschem version=2.9.9 file_version=1.2 }
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -34,7 +34,6 @@ N 2410 -1150 2410 -1120 { lab=vout2}
 N 2410 -1120 2410 -1070 { lab=vout2}
 N 2350 -1040 2410 -1040 { lab=vss}
 N 2140 -910 2190 -910 { lab=vbn}
-N 2080 -1010 2080 -980 { lab=#net2}
 N 2130 -980 2350 -980 { lab=#net2}
 N 2410 -1010 2410 -980 { lab=#net2}
 N 2230 -980 2230 -940 { lab=#net2}
@@ -83,6 +82,7 @@ N 2310 -1150 2350 -1150 { lab=vout2}
 N 1610 -1380 1770 -1380 { lab=vdd}
 N 1610 -1330 1610 -1210 { lab=vdd}
 N 2660 -1260 2720 -1260 { lab=vbp}
+N 2080 -1010 2080 -980 {lab=#net2}
 C {isource.sym} 1610 -1180 0 0 {name=Iref value=\{iref\}}
 C {vsource.sym} 2820 -1000 0 0 {name=VSS value=\{vss\}}
 C {gnd.sym} 2820 -900 0 0 {name=l1 lab=GND}
@@ -97,31 +97,32 @@ C {vsource.sym} 3210 -1000 0 1 {name=V1 value=\{vcm\}}
 C {lab_pin.sym} 2230 -840 1 1 {name=l10 sig_type=std_logic lab=vss}
 C {lab_wire.sym} 1930 -1380 0 0 {name=l21 sig_type=std_logic lab=vdd}
 C {lab_wire.sym} 1690 -980 0 0 {name=l23 sig_type=std_logic lab=vbn}
-C {netlist_not_shown.sym} 2570 -980 0 0 {name=simulation only_toplevel=false 
+C {netlist_not_shown.sym} 2560 -970 0 0 {name=simulation only_toplevel=false 
 value="
 
 * Parameters
-.param vdd = 1.8
+.param vdd = 1.62
 .param vss = 0.0
-.param iref = 50u
-.param wn = 5
-.param wp = 1.5
-.param lp = 0.75
-.param multn = 2
-.param multn2 = 2
-.param multn3 = 4
-.param multp = 4
-.param multdiff = 10
-.param multp2 = 5
-.param multp4 = 3
-.param Vin = 40m
-.param vcm = 1.2
+.param iref = 45u
+.param wn = 0.5
+.param wp = 1
+.param lp = 1
+.param multn = 10
+.param multn2 = 10
+.param multn3 = 21
+.param multp = 12
+.param multdiff = 4
+.param multp2 = 15
+.param multp4 = 7
+.param Vin = 100m
+.param vcm = 1.08
 
-.options TEMP = 65.0
+.options TEMP = 125.0
 
 * Models
-.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
-
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice ss
 * Data to save
 .save all
 + @M.XM0.msky130_fd_pr__nfet_01v8_lvt[id]
@@ -217,6 +218,7 @@ value="
   let vdiff = vout1-vout2
   let vindiff = vin1-vin2
   plot v(vindiff) v(vdiff)
+ plot v(vout1) v(vout2)
   write tp3_2_tran.raw
 
   reset

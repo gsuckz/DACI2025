@@ -1,4 +1,4 @@
-v {xschem version=3.0.0 file_version=1.2 }
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -26,7 +26,12 @@ N 1030 -40 1030 -20 { lab=#net1}
 N 940 -40 1030 -40 { lab=#net1}
 N 940 -110 1020 -110 {
 lab=vss}
-C {netlist_not_shown.sym} 410 -190 0 0 {name=simulation only_toplevel=false 
+C {netlist_not_shown.sym} 420 -200 0 0 {
+
+
+
+
+name=simulation only_toplevel=false 
 value="
 
 * Circuit Parameters
@@ -42,8 +47,10 @@ value="
 
 
 * Models
-.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
-
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+*.lib ~/skywater/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/corners/sky130.lib TT
+.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+*.lib /foss/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice.tt.red tt
 * Data to save
 .save all
 + @M.XM1.msky130_fd_pr__nfet_01v8[id]
@@ -61,9 +68,38 @@ value="
 * Simulation
 .control
 
+******************************************************
+* analisis ruido w
+******************************************************
+alterparam multiplier = 5
+alterparam load = 1f
+reset  
+noise v(vout) V4 dec 100 10k 1000G 1
+setplot noise1
+plot onoise_spectrum ylog xlog
+*plot inoise_spectrum onoise_spectrum ylog xlog
+
+setplot noise2
+print inoise_total
+print onoise_total
+print onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.1overf 
+print onoise_total.m.xm1.msky130_fd_pr__nfet_01v8.id 
+
+set filetype=ascii
+write tp4_noise.raw
+
+******************************************************
+* op
+******************************************************
+unset filetype
+op
+save all
+write tp4.raw
+
 .endc
 .end
-"}
+"
+}
 C {vsource.sym} 462.5 72.5 0 0 {name=V1 value=DC\{vss\}}
 C {vsource.sym} 550 72.5 0 0 {name=V2 value=DC\{vdd\}}
 C {vsource.sym} 640 70 0 0 {name=V3 value=DC\{vcm\}}

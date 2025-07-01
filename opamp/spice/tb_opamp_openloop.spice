@@ -87,11 +87,11 @@ XM7 vout iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=50 nf=1 ad='W * 0.29' as='
 + nrs='0.29 / W' sa=0 sb=0 sd=0 mult=24 m=24
 XM8 iref iref vdd vdd sky130_fd_pr__pfet_01v8 L=0.3 W=50 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
 + nrs='0.29 / W' sa=0 sb=0 sd=0 mult=3 m=3
-XM1 vbn vin_n vp vp sky130_fd_pr__pfet_01v8_lvt L=0.6 W=85 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM1 vbn vin_n vp vp sky130_fd_pr__pfet_01v8_lvt L=0.6 W=86 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
-XM2 v1 vin_p vp vp sky130_fd_pr__pfet_01v8_lvt L=0.6 W=85 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM2 v1 vin_p vp vp sky130_fd_pr__pfet_01v8_lvt L=0.6 W=86 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=10 m=10
-C1 net2 vout 5.8p m=1
+C1 net2 vout 5.77p m=1
 Vmeas net1 vss 0
 .save i(vmeas)
 XM6 vout v1 net1 net1 sky130_fd_pr__nfet_01v8 L=0.3 W=44 nf=1 ad='W * 0.29' as='W * 0.29' pd='2 * (W + 0.29)' ps='2 * (W + 0.29)' nrd='0.29 / W'
